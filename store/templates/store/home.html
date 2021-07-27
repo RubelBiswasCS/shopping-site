@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <section class="products">
+        
+        {% for p in products %}
+        <div class="product-card">
+            <figure class="card-image">
+                {% load static %}
+                <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image">
+            </figure>
+            <small>{{p.product_name}}</small>
+            <p>{{p.unit_price}}$</p>
+            <button id="add-btn" class="add-btn" type="submit" name="button" >Add to Cart</button>
+        </div>
+        {% endfor %}
+    </section>
+    <script>
+        $(document).on("click","#add-btn",function(e){
+            // var user_id = '{{ request.user.id }}';
+               e.preventDefault();
+               $.ajax({
+                   method:"POST",
+                   url: "{% url 'add-to-cart' %}",
+                   data:{
+                        user_id : '{{ request.user.id }}',
+                        csrfmiddlewaretoken: '{{ csrf_token}}',
+
+                        
+                   },
+                   
+                  
+
+                success: function(response){
+                    console.log(response.user_id);
+                    console.log('data successfully send');
+                },
+                error: function(){
+                    console.log("something went wrong");
+                },
+               });
+
+           });
+    </script>
+{% endblock %}

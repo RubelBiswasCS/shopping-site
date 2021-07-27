@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Sanchez&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@700&display=swap');
+
+.login-bg{
+   
+  min-height: 100vh;
+  background-color: rgb(185, 98, 117);
+  /* background-image: ('{% static "store/img/bg-login.jpg" %}') didn't worked*/
+  /* background-image:url('/static/store/img/bg-login.jpg'); worked */
+  /* background-image: url('{% static 'store/img/bg-login.jpg' %}'); didn't worked */
+  background: linear-gradient(to bottom, rgba(18,42, 66, .50), rgba(18,42, 66, .5)), url('/static/store/img/bg6.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 50%;
+  
+}
+.login h4, .register h4{
+  font-family: 'Ubuntu Mono', monospace;
+  color: azure;
+}
+
+.flex-col-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nonfield, .errorlist{
+  text-align: center;
+  color: rgb(172, 23, 23);
+  font-size: .7em;
+  list-style-type: none;
+}
+.register ul, .register li{
+  margin: 0;
+  padding: 0;
+}
+
+.form-group{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-group legend{
+  color: azure;
+  text-align: center;
+}
+.form-field{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .form-field label {
+    display: none;
+} */
+
+.form-field input {
+    box-sizing: border-box;
+    text-align: center;
+    
+    -moz-border-radius: 15px 15px;
+    -ms-border-radius: 15px 15px;
+    -o-border-radius:15px 15px;
+    -webkit-border-radius: 15px 15px;
+    border-radius: 15px 15px;
+    margin: 10px;
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 350px;
+    min-height: 40px;
+    color: white !important;
+    font-size: .80em;
+    background: rgba(255,255,255,.08);
+    border-style: none;
+    box-shadow: 0 0 0 1px gray;
+    outline: none;
+}
+.form-field input::placeholder{
+  color: white;
+}
+.form-field input:hover{
+    
+    background: transparent;
+    box-shadow: 0 0 0 1px rgb(20, 48, 93);
+    /* border-radius: 15px 15px !important; */
+    
+}
+.btn-ls{
+    box-sizing: border-box;
+    border-radius: 15px 15px;
+    margin: 10px;
+    padding: 2px;
+    min-width: 350px;
+    min-height: 40px;
+    background-color: rgb(219, 126, 20);
+    color: rgb(18, 75, 77);
+    border: none;
+    font-family: 'David Libre', serif;
+    font-size: .80em;
+    text-transform: uppercase;
+}
+.div1{
+  display: flex;
+  min-width: 350px;
+  justify-content: center;
+  align-items: center;
+  
+}
+.rm-checkbox{
+  margin: 0;
+  padding: 0;
+}
+.login a{
+  vertical-align: middle;
+  text-decoration: none;
+  color: white;
+  font-size: .70em;
+  margin-left: auto;
+  text-align: center;
+}
+.rm-checkbox{
+  width: 50%;
+}
+.lable-checkbox{
+  vertical-align: middle;
+  font-size: .70em;
+  color: white;
+   
+}
+
+a.ac-link{
+  color: whitesmoke;
+  margin: 0;
+  margin-top: 20px;
+  font-size: .70em;
+  font-family: 'Sanchez', serif;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.form-field label{
+  display: none;
+}
+
+.register a.ac-link{
+  font-size: .60em;
+}
+mark{
+  background: transparent;
+  color: aquamarine;
+}
+
+ 
+@media only screen and (min-width:1201px){
+  /* #about{
+      background: rgb(23, 196, 124);
+  } */
+  .form-field input {
+    min-width: 350px;
+    min-height: 40px;
+    
+}
+
+}
+@media only screen and (min-width:1025px) and (max-width:1200px){
+  /* #about{
+      background: rgb(197, 175, 177);
+  } */
+  .form-field input {
+    min-width: 350px;
+    min-height: 40px;
+    
+}
+}
+
+@media only screen and (min-width:601px) and (max-width:1024px){
+  .form-field input {
+    min-width: 350px;
+    min-height: 40px;
+    
+}
+  
+}
+@media only screen and (min-width:321px) and (max-width:600px){
+  .form-field input {
+    min-width: 80%;
+    min-height: 40px;
+    
+}
+.btn-ls{
+  min-width: 80%;
+  min-height: 40px;
+ 
+}
+
+}
+
+@media only screen and (max-width:320px){
+  /* #about{
+      background: cadetblue;
+  } */
+  .form-field input {
+    min-width: 90%;
+    min-height: 30px;
+    
+}
+.btn-ls{
+  min-width: 90%;
+  min-height: 30px;
+ 
+}
+}
+
+    
+
+

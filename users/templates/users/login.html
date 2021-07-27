@@ -1,0 +1,36 @@
+{% extends 'store/base.html' %}
+{%load static%}
+{% block content %}
+
+<section class="login login-bg flex-col-center">
+    <h4>Have an account ?</h4>
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        <fieldset class="form-field">
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field }}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button class="btn-ls" type="submit">Login</button>
+    </form>
+    <div class="div1">
+        <div class="rm-checkbox">
+            <input type="checkbox" id="remember-user" name="remember-user" value="">
+            <label for="remember-user" class="lable-checkbox">Remember me</label>
+           
+        </div>
+        <a href="#" value="" >Forget Password!</a>
+    </div>
+     <a class="ac-link" href="{% url 'register' %}">Need an Account !</a> 
+   
+</section>
+    
+{% endblock content%}
+
