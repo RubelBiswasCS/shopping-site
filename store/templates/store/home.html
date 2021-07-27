@@ -14,8 +14,20 @@
             <button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>
         </div>
         {% endfor %}
+        <div id="cart" style="height:100px; width:100px; background: red;">
+
+        </div>
+        <div>
+            
+        </div>
     </section>
     <script>
+        // show and hide cart
+        $("#cart-btn").click(function () {
+                $("#cart").toggle("slow");
+            });
+
+        //fuction for add item to the cart
         $(document).on("click","#add-btn",function(e){
             // var user_id = '{{ request.user.id }}';
             var id = $(this).val();
