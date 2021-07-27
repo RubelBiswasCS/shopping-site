@@ -80,7 +80,7 @@ h3{
     flex-wrap: wrap;
     align-items: center;
     justify-content:center;
-    width: 100%;
+    width: 80%;
     padding: 2%;
 }
 .product-card{
@@ -160,6 +160,12 @@ figure{
     margin-bottom: 20px;
   }
   
+  .gen-div{
+      display: flex;
+  }
+  .wd-100{
+    width: 100%;
+  }
  
 @media only screen and (min-width:1201px){
     /* #about{

@@ -1,6 +1,7 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+<div class="gen-div">
     <section class="products">
         
         {% for p in products %}
@@ -14,17 +15,26 @@
             <button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>
         </div>
         {% endfor %}
-        <div id="cart" style="height:100px; width:100px; background: red;">
+        <!-- <div id="cart" style="height:100px; width:100px; background: red;">
 
+        </div> -->
+        
+
+    </section>
+    <section id="cart" class="cart" >
+        <div class="cart-item">
+            <p>item 1</p>
         </div>
-        <div>
-            
+        <div class="cart-item">
+            <p>item 1</p>
         </div>
     </section>
+</div>
     <script>
         // show and hide cart
         $("#cart-btn").click(function () {
                 $("#cart").toggle("slow");
+                $( ".products" ).addClass( "wd-100" );
             });
 
         //fuction for add item to the cart
