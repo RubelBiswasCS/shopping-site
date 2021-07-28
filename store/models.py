@@ -16,7 +16,7 @@ class Product(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    # quantity = models.IntegerField(default=0, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
     # date_created = models.DateTimeField(auto_now_add=True,blank=True)
     # date_modified = models.DateTimeField(blank=True)
     # completed = models.BooleanField(default=False)

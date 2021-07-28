@@ -31,7 +31,7 @@
           
             
             <div class="cart-items" id='cart-items'>
-                <div class="cart-item" id="cart-item">
+                <!-- <div class="cart-item" id="cart-item">
                     <section class="item-img">
         
                     </section>
@@ -44,7 +44,7 @@
                     <section class="item-action">
                         
                     </section>
-                </div>
+                </div> -->
             </div>
            
             
@@ -67,23 +67,23 @@
 
                         var myObj = JSON.parse(response);
                            console.log("Success get data");
-                           console.log(myObj.cart_items[1]);
+                        //    console.log(myObj[1].product_name);
                            $("#cart-items").empty();
                            
-                           for (var i in myObj.cart_items){
-                            console.log(myObj.cart_items[i]);
+                           for (var i=0 in myObj){
+                            console.log(myObj[i].product_name);
                                var temp = `<div class="cart-item" id="cart-item">
-                    <section class="item-img">
-        
+                    <section class="item-unit flex-center">
+                        ${myObj[i].quantity}
                     </section>
-                    <section class="name" id="current-p-name">
-                        ${myObj.cart_items[i]}
+                    <section class="name flex-center" id="current-p-name">
+                        ${myObj[i].product_name}
                     </section>
-                    <section class="price">
-                        
+                    <section class="price flex-center">
+                        ${myObj[i].price}$
                     </section>
-                    <section class="item-action">
-                        
+                    <section class="item-action flex-center">
+                        <button class='rm-cart-item' id='rm-cart-item' value=" ${myObj[i].product_id}">x</button>
                     </section>
                 </div>`;
                 // $("#cart-items").append("<p>Hi</p>");
@@ -140,6 +140,34 @@
                 },
                 error: function(){
                     console.log("something went wrong");
+                },
+               });
+
+           });
+        //    remove cart item
+
+        $(document).on("click","#rm-cart-item",function(e){
+            // var user_id = '{{ request.user.id }}';
+            var id = $(this).val();
+               e.preventDefault();
+               $.ajax({
+                   method:"POST",
+                   url: "{% url 'remove-cart-item' %}",
+                   data:{
+                        user_id : '{{ request.user.id }}',
+                        product_id : $(this).val(),
+                        csrfmiddlewaretoken: '{{ csrf_token}}',
+
+                        
+                   },
+                   
+                  
+
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(){
+                    console.log("error while delete item");
                 },
                });
 
