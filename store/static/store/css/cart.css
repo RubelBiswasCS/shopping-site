@@ -1,9 +1,25 @@
 .cart{
-    width: 20vw;
+    /* display: none; */
+    width: 25vw;
     height: 80vh;
     border: 2px solid gray;
     
-    background-color: yellow;
+    background-color: azure;
+}
+.cart-header{
+    display: flex;
+    justify-content: center;
+    height: 25px;
+    background-color: rgb(13, 97, 109);
+}
+.close-cart{
+    height: 20px;
+    width: 20px;
+    margin-left: auto;
+    font-size: .7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .cart-item{
     height: 150px;

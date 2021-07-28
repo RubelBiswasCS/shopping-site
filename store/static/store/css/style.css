@@ -80,8 +80,8 @@ h3{
     flex-wrap: wrap;
     align-items: center;
     justify-content:center;
-    width: 80%;
-    padding: 2%;
+    width: 100%;
+    padding: 10px;
 }
 .product-card{
     display: flex;
@@ -163,8 +163,8 @@ figure{
   .gen-div{
       display: flex;
   }
-  .wd-100{
-    width: 100%;
+  .wd-75{
+    width: 75%;
   }
  
 @media only screen and (min-width:1201px){
