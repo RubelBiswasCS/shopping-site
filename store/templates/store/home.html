@@ -27,24 +27,27 @@
                 x
             </button>
         </header>
-        <div class="cart-container">
-            <div class="cart-item">
-                <section class="item-img">
-    
-                </section>
-                <section class="name" id="current-p-name">
-                    
-                </section>
-                <section class="price">
-                    
-                </section>
-                <section class="item-action">
-                    
-                </section>
+        <div class="cart-container" id="cart-container">
+          
+            
+            <div class="cart-items" id='cart-items'>
+                <div class="cart-item" id="cart-item">
+                    <section class="item-img">
+        
+                    </section>
+                    <section class="name" id="current-p-name">
+                        
+                    </section>
+                    <section class="price">
+                        
+                    </section>
+                    <section class="item-action">
+                        
+                    </section>
+                </div>
             </div>
-            <div class="cart-item">
-                <p>item 1</p>
-            </div>
+           
+            
             <button class="checkout-btn" id="checkout">Checkout</button>
         </div>
     </section>
@@ -61,11 +64,35 @@
                             user_id: '{{ request.user.id }}',
                        },
                        success:function(response){
+
                         var myObj = JSON.parse(response);
                            console.log("Success get data");
-                           console.log(myObj.cart_items)
-                           $("#current-p-name").empty();
-                           $("#current-p-name").append(myObj.cart_items);
+                           console.log(myObj.cart_items[1]);
+                           $("#cart-items").empty();
+                           
+                           for (var i in myObj.cart_items){
+                            console.log(myObj.cart_items[i]);
+                               var temp = `<div class="cart-item" id="cart-item">
+                    <section class="item-img">
+        
+                    </section>
+                    <section class="name" id="current-p-name">
+                        ${myObj.cart_items[i]}
+                    </section>
+                    <section class="price">
+                        
+                    </section>
+                    <section class="item-action">
+                        
+                    </section>
+                </div>`;
+                // $("#cart-items").append("<p>Hi</p>");
+                            $("#cart-items").append(temp);
+                            
+                            console.log("Success call");
+                           };
+                           
+                           
 
                        },
                        error:function(){
@@ -74,7 +101,7 @@
                        },
                    });
 
-               },500);
+               },1000);
            });
 
         // show and hide cart

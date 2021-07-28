@@ -35,11 +35,16 @@ def cart(request):
     user_id = request.POST['user_id']
 
     user = User.objects.get(pk=user_id)
-    cart_items = Cart.objects.first().product.product_name
-
+    # cart_items = Cart.objects.filter(user=user)
+    if request.method == 'POST':
+        cart_items = Cart.objects.filter(user=user)
+        
+    items=[]
+    for i in cart_items:
+        items.append(i.product.product_name)
     data={
         
-        'cart_items':cart_items,
+        'cart_items':items,
     }
 
     response = json.dumps(data)
