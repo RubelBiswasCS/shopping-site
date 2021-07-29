@@ -44,7 +44,7 @@ def remove_cart_item(request):
     product_id = request.POST['product_id']
     # cart_user_id = Cart.objects.get(user__user_id = user_id)
     if request.method=='POST' :
-        product=Cart.objects.get(product__pk=product_id)
+        product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
         product.delete()
     
     return HttpResponse("item deleted")
