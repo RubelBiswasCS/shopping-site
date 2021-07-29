@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <section>
+        <form method="POST" action="{% url 'shipping-address' %}" class="shipping">
+            {% csrf_token %}
+            <fieldset>
+                {{s_form}}
+                <button type="submit" class="shipping-btn">Submit</button>
+            </fieldset>
+        </form>
+       
+    </section>
+{% endblock content%}

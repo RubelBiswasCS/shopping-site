@@ -47,8 +47,12 @@
                 </div> -->
             </div>
            
+            <!-- <form action="{% url 'shipping-address' %}" class="checkout-form">
+                {% csrf_token %}
+                <button class="checkout-btn" id="checkout">Checkout</button>
+            </form> -->
+            <a href="{% url 'shipping-address' %}" class="checkout-btn" id="checkout">Checkout</a>
             
-            <button class="checkout-btn" id="checkout">Checkout</button>
         </div>
     </section>
 </div>
@@ -69,7 +73,7 @@
                            console.log("Success get data");
                         //    console.log(myObj[1].product_name);
                            $("#cart-items").empty();
-                           
+                           var total_item = 0;
                            for (var i=0 in myObj){
                             console.log(myObj[i].product_name);
                                var temp = `<div class="cart-item" id="cart-item">
@@ -87,10 +91,13 @@
                     </section>
                 </div>`;
                 // $("#cart-items").append("<p>Hi</p>");
+                            total_item ++;
                             $("#cart-items").append(temp);
                             
                             console.log("Success call");
                            };
+                           document.getElementById("total-item").innerHTML = total_item.toString();
+
                            
                            
 

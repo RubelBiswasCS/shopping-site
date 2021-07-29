@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Product, Cart
+from .forms import ShippingAddressForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponse
 import json
@@ -79,4 +80,27 @@ def cart(request):
     # }
 
     response = json.dumps(data)
-    return HttpResponse(response)      
+    return HttpResponse(response)
+
+def shipping_address(request):
+    # people = People.objects.all()
+
+    # p = People.objects.get(pk=pk)
+    
+    if request.method == 'POST':
+        form = ShippingAddressForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.save()
+            return redirect('home')
+
+    else:
+        form = ShippingAddressForm()
+    
+    template_name="store/shipping.html"
+    context={
+        's_form':form,
+        
+    }
+    return render(request, template_name,context)
