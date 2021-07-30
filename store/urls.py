@@ -10,6 +10,7 @@ urlpatterns = [
     path('remove-cart-item',views.remove_cart_item,name="remove-cart-item"),
     path('create-order',views.create_order,name="create-order"),
     path('shipping-address',views.shipping_address,name='shipping-address'),
+    path('order-overview',views.order_overview,name='order-overview'),
     path('payment',views.payment_view,name='payment'),
 ]
 

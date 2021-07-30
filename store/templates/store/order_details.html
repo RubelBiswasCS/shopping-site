@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <section>
+         {{order.transaction_id}}
+      
+      <div class="orderitems">
+       <p>{{shipping_address.city}}</p>
+      </div>
+        <div class="orderitems">
+            {% for item in order_items %}
+              <p>{{item.product.product_name}}</p>
+              <p>{{item.product.product_code}}</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

@@ -132,3 +132,19 @@ def payment_view(request):
 
     template_name = 'store/payment.html'
     return render(request, template_name,context)
+
+def order_overview(request):
+    user_id = request.user.id
+    order_id = request.session.get('order_id')
+
+    order = Order.objects.get(pk=order_id)
+    shipping_address = ShippingAddress.objects.get(order__pk=order_id)
+    order_items = OrderItem.objects.filter(order__pk=order_id)
+
+    context={
+        'order': order,
+        'shipping_address':shipping_address,
+        'order_items': order_items,
+    }
+    template_name = 'store/order_details.html'
+    return render(request, template_name,context)
