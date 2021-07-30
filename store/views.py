@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
-from .models import Product, Cart
+from .models import Product,Cart,ShippingAddress,OrderItem,Order
 from .forms import ShippingAddressForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponse
 import json
+import datetime
 
 
 def home(request):
@@ -82,18 +83,31 @@ def cart(request):
     response = json.dumps(data)
     return HttpResponse(response)
 
-def shipping_address(request):
-    # people = People.objects.all()
-
-    # p = People.objects.get(pk=pk)
+def create_order(request):
+    transaction_id = datetime.datetime.now().timestamp()
     
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user,transaction_id=transaction_id)
+        cart_items = Cart.objects.filter(user=user)
+        for item in cart_items:
+            order_item = OrderItem(order=order,product=item.product,quantity=item.quantity)
+            order_item.save()
+
+        request.session['order_id'] = order.pk
+        return redirect('shipping-address')
+
+def shipping_address(request):
+    order_id = request.session.get('order_id')
+    order = Order.objects.get(pk=order_id) 
     if request.method == 'POST':
         form = ShippingAddressForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user = request.user
+            obj.order = order
             obj.save()
-            return redirect('home')
+            return redirect('payment')
 
     else:
         form = ShippingAddressForm()
@@ -103,4 +117,18 @@ def shipping_address(request):
         's_form':form,
         
     }
+    return render(request, template_name,context)
+
+def payment_view(request):
+    user_id = request.user.id
+    order_id = request.session.get('order_id')
+    s_address = ShippingAddress.objects.get(order__pk=order_id)
+    order_items = OrderItem.objects.filter(order__pk=order_id)
+    context={
+        'user_id':user_id,
+        's_address':s_address,
+        'order_items':order_items,
+    }
+
+    template_name = 'store/payment.html'
     return render(request, template_name,context)

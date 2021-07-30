@@ -2,6 +2,12 @@
 
 {% block content %}
     <section>
-      
+      {{s_address.name}}
+      <div class="orderitems">
+          {% for item in order_items %}
+            <p>{{item.product.product_name}}</p>
+            <p>{{item.product.product_code}}</p>
+          {% endfor %}
+      </div>
     </section>
 {% endblock content%}
