@@ -12,6 +12,7 @@ urlpatterns = [
     path('shipping-address',views.shipping_address,name='shipping-address'),
     path('order-overview',views.order_overview,name='order-overview'),
     path('payment',views.payment_view,name='payment'),
+    path('payment-method',views.payment_method,name='payment-method'),
 ]
 
 

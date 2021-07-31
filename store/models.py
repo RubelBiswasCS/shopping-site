@@ -69,3 +69,6 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.unit_price * self.quantity
         return total
+class PaymentMethod(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    method = models.CharField(max_length=100,null=False)

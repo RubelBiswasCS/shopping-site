@@ -167,6 +167,60 @@ figure{
   .wd-75{
     width: 75%;
   }
+ .shipping-informations{
+     background-color: gainsboro;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+ }
+ /* .shipping-informations .form-group{
+     min-width: 80%;
+ } */
+ .shipping-informations .form-field{
+    min-width: 100%;
+}
+.shipping-informations .fieldWrapper{
+    min-width: 100%;
+}
+ .shipping-informations .form-field input{
+    box-sizing: border-box;
+    text-align: center;
+    
+    
+    border-radius: 5px 5px;
+    margin: 0;
+    /* padding: 2px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 100%;
+    min-height: 40px;
+    color: rgb(31, 27, 27) !important;
+    font-size: .70em;
+    background: rgba(255,255,255,.08);
+    border-style: none;
+    box-shadow: 0 0 0 1px rgb(172, 187, 187);
+    outline: none;
+ }
+ .shipping-informations .field-n-label{
+    width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     border-radius: 5px 5px;
+     box-shadow: 0 0 0 1px rgb(9, 94, 97);
+     outline: blue;
+     padding: 10px;
+     margin: 10px;
+ }
+ .shipping-informations .field-n-label input:hover{
+    box-shadow: 0 0 0 1px rgb(43, 129, 62);
+ }
+ .field-n-label label{
+    
+    font-size: .6em;
+ }
  
 @media only screen and (min-width:1201px){
     /* #about{

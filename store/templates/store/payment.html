@@ -2,7 +2,7 @@
 
 {% block content %}
     <section>
-      {{s_address.name}}
+      {{s_informations.name}}
       <div class="orderitems">
           {% for item in order_items %}
             <p>{{item.product.product_name}}</p>
@@ -10,7 +10,30 @@
           {% endfor %}
       </div>
       <div class="payment-options">
-        <button>Cash on Dalivery</button>
+        <button id="online-payment" class="payment-option">Pay Online</button>
+        <button id="cash-on-delivery" class="payment-option">Cash on Dalivery</button>
       </div>
     </section>
+    <section id="payment-method" >
+
+    </section>
+    <script>
+      // $(document).ready(function () {
+      //     $('#payment-method').load("{% url 'payment-method' %}",
+      //       function () {
+      //         alert("Load was performed.");
+      //       });
+      //   });
+       
+$(document).ready(function() {
+  $("#cash-on-delivery").on("click", function() {
+    $('#payment-method').load("{% url 'payment-method' %}",
+            function () {
+              alert("Load was performed.");
+            });
+          });
+});
+
+    </script>
+    
 {% endblock content%}

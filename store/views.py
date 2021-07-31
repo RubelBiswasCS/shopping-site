@@ -122,11 +122,11 @@ def shipping_address(request):
 def payment_view(request):
     user_id = request.user.id
     order_id = request.session.get('order_id')
-    s_address = ShippingAddress.objects.get(order__pk=order_id)
+    s_informations = ShippingAddress.objects.get(order__pk=order_id)
     order_items = OrderItem.objects.filter(order__pk=order_id)
     context={
         'user_id':user_id,
-        's_address':s_address,
+        's_informations':s_informations,
         'order_items':order_items,
     }
 
@@ -148,3 +148,7 @@ def order_overview(request):
     }
     template_name = 'store/order_details.html'
     return render(request, template_name,context)
+
+def payment_method(request):
+    template_name = 'store/payment_method.html'
+    return render(request, template_name)
