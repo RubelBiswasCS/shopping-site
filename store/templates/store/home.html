@@ -47,7 +47,7 @@
                 </div> -->
             </div>
            
-            <form action="{% url 'create-order' %}" class="checkout-form">
+            <form action="{% url 'shipping-address' %}" class="checkout-form">
                 {% csrf_token %}
                 <button class="checkout-btn" id="checkout">Checkout</button>
             </form>

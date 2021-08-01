@@ -2,12 +2,12 @@
 
 {% block content %}
     <section>
-      {{s_informations.name}}
+      <!-- {{s_informations.name}} -->
       <div class="orderitems">
-          {% for item in order_items %}
+          <!-- {% for item in order_items %}
             <p>{{item.product.product_name}}</p>
             <p>{{item.product.product_code}}</p>
-          {% endfor %}
+          {% endfor %} -->
       </div>
       <div class="payment-options">
         <button id="online-payment" data-url="{% url 'payment-method'%}" class="payment-option">Pay Online</button>
@@ -30,7 +30,7 @@ $(document).ready(function() {
   $("#cash-on-delivery").on("click", function() {
     $('#payment-method').load("{% url 'payment-method' %} #method-cod",
             function () {
-              alert("Load was performed.");
+              // alert("Load was performed.");
             });
           });
 });

@@ -33,6 +33,8 @@ class Order(models.Model):
 	# date_ordered = models.DateTimeField(auto_now_add=True)
     state = models.CharField(max_length=100,default="incomplete")
     transaction_id = models.CharField(max_length=100, null=True)
+    temp_order_id = models.CharField(max_length=100, null=True)
+    
     
     def __str__(self):
         return str(self.id)

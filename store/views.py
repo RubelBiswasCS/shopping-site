@@ -83,29 +83,17 @@ def cart(request):
     response = json.dumps(data)
     return HttpResponse(response)
 
-def create_order(request):
-    transaction_id = datetime.datetime.now().timestamp()
-    
-    if request.user.is_authenticated:
-        user = request.user
-        order, created = Order.objects.get_or_create(user=user,transaction_id=transaction_id)
-        cart_items = Cart.objects.filter(user=user)
-        for item in cart_items:
-            order_item = OrderItem(order=order,product=item.product,quantity=item.quantity)
-            order_item.save()
-
-        request.session['order_id'] = order.pk
-        return redirect('shipping-address')
 
 def shipping_address(request):
-    order_id = request.session.get('order_id')
-    order = Order.objects.get(pk=order_id) 
+    # order_id = request.session.get('order_id')
+    # order = Order.objects.get(pk=order_id)
+    request.session['temp_order_id'] = datetime.datetime.now().timestamp()
     if request.method == 'POST':
         form = ShippingAddressForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user = request.user
-            obj.order = order
+            # obj.order = order
             obj.save()
             return redirect('payment')
 
@@ -121,24 +109,49 @@ def shipping_address(request):
 
 def payment_view(request):
     user_id = request.user.id
-    order_id = request.session.get('order_id')
-    s_informations = ShippingAddress.objects.get(order__pk=order_id)
-    order_items = OrderItem.objects.filter(order__pk=order_id)
+    # order_id = request.session.get('order_id')
+    # order_id = 14
+    # s_informations = ShippingAddress.objects.get(order__pk=order_id)
+    # order_items = OrderItem.objects.filter(order__pk=order_id)
     context={
         'user_id':user_id,
-        's_informations':s_informations,
-        'order_items':order_items,
+        # 's_informations':s_informations,
+        # 'order_items':order_items,
     }
 
     template_name = 'store/payment.html'
     return render(request, template_name,context)
+
+
+def payment_method(request):
+    template_name = 'store/payment_method.html'
+    return render(request, template_name)
+
+def create_order(request):
+    temp_order_id = request.session.get('temp_order_id')
+    transaction_id = datetime.datetime.now().timestamp()
+    
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(temp_order_id=temp_order_id,user=user)
+        
+        cart_items = Cart.objects.filter(user=user)
+        for item in cart_items:
+            order_item, created = OrderItem.objects.get_or_create(order=order,product=item.product,quantity=item.quantity)
+            item.delete()
+            # order_item = OrderItem(order=order,product=item.product,quantity=item.quantity)
+            # order_item.save()
+        order.transaction_id=transaction_id
+        order.save()
+        request.session['order_id'] = order.pk
+        return redirect('order-overview')
 
 def order_overview(request):
     user_id = request.user.id
     order_id = request.session.get('order_id')
 
     order = Order.objects.get(pk=order_id)
-    shipping_address = ShippingAddress.objects.get(order__pk=order_id)
+    shipping_address = ShippingAddress.objects.get(user__pk=user_id)
     order_items = OrderItem.objects.filter(order__pk=order_id)
 
     context={
@@ -148,7 +161,3 @@ def order_overview(request):
     }
     template_name = 'store/order_details.html'
     return render(request, template_name,context)
-
-def payment_method(request):
-    template_name = 'store/payment_method.html'
-    return render(request, template_name)
