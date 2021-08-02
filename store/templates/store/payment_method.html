@@ -1,9 +1,9 @@
 <section id="method-cod">
     <form action="{% url 'create-order' %}" class="checkout-form">
         {% csrf_token %}
-        <button class="create-order-btn" id="proceed">Proceed</button>
+        <button class="p-btn" id="proceed">Proceed</button>
     </form>
 </section>
-<section id="method-po">
-    <button>Pay Online</button>
+<section id="method-po" >
+    <button class="p-btn">Pay Online</button>
 </section>

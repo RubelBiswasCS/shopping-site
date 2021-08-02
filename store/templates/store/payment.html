@@ -1,7 +1,7 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-    <section>
+    <section class='payment flex-col-center'>
       <!-- {{s_informations.name}} -->
       <div class="orderitems">
           <!-- {% for item in order_items %}
@@ -10,11 +10,12 @@
           {% endfor %} -->
       </div>
       <div class="payment-options">
+        <h3>Select Payment Option</h3>
         <button id="online-payment" data-url="{% url 'payment-method'%}" class="payment-option">Pay Online</button>
         <button id="cash-on-delivery" class="payment-option">Cash on Dalivery</button>
       </div>
     </section>
-    <section id="payment-method" >
+    <section id="payment-method" class="payment-options">
 
     </section>
    

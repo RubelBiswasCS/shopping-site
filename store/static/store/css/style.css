@@ -221,7 +221,51 @@ figure{
     
     font-size: .6em;
  }
- 
+ .payment{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     
+     border: 2px solid green;
+ }
+ .payment-options{
+     background-color: honeydew;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding:30px;
+ }
+ button.payment-option{
+    box-sizing: border-box;
+    border-radius: 15px 15px;
+    margin: 10px;
+    padding: 2px;
+    min-width: 350px;
+    min-height: 40px;
+    background-color: rgb(35, 163, 185);
+    color: rgb(18, 75, 77);
+    border: none;
+    font-family: 'David Libre', serif;
+    font-size: .80em;
+    text-transform: uppercase;
+ }
+ button.p-btn{
+    box-sizing: border-box;
+    border-radius: 15px 15px;
+    margin: 10px;
+    padding: 2px;
+    min-width: 350px;
+    min-height: 40px;
+    background-color: rgb(35, 185, 35);
+    color: rgb(18, 75, 77);
+    border: none;
+    font-family: 'David Libre', serif;
+    font-size: .80em;
+    text-transform: uppercase;
+ }
 @media only screen and (min-width:1201px){
     /* #about{
         background: rgb(23, 196, 124);
