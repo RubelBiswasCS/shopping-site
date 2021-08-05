@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Product,Cart,ShippingAddress,OrderItem,Order
 from .forms import ShippingAddressForm
 from django.contrib.auth.models import User
@@ -88,17 +88,30 @@ def shipping_address(request):
     # order_id = request.session.get('order_id')
     # order = Order.objects.get(pk=order_id)
     request.session['temp_order_id'] = datetime.datetime.now().timestamp()
+    initial = get_object_or_404(ShippingAddress, user = request.user)
     if request.method == 'POST':
         form = ShippingAddressForm(request.POST)
         if form.is_valid():
-            obj = form.save(commit=False)
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            address = form.cleaned_data['address']
+            city = form.cleaned_data['city']
+            postcode = form.cleaned_data['postcode']
+            country = form.cleaned_data['country']
+            obj, created = ShippingAddress.objects.update_or_create(
+    user=request.user,
+    defaults={'name':name,'phone':phone,'address':address,'city':city,'postcode':postcode,'country':country},
+)
             obj.user = request.user
-            # obj.order = order
             obj.save()
+            # obj = form.save(commit=False)
+            # obj.user = request.user
+            # # obj.order = order
+            # obj.save()
             return redirect('payment')
 
     else:
-        form = ShippingAddressForm()
+        form = ShippingAddressForm(instance=initial)
     
     template_name="store/shipping.html"
     context={
