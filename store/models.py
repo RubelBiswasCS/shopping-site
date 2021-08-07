@@ -25,6 +25,11 @@ class Cart(models.Model):
         obj_name = self.user.username +'_'+ self.product.product_name
         return obj_name
 
+    # @property
+    # def get_total_item(self):
+    #     cartitems = self.product_set.all()
+    #     total = sum([item.get_total for item in orderitems])
+    #     return total
 
 
 
