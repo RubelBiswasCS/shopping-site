@@ -72,8 +72,21 @@ h3{
 }
 .main{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
     min-height: 100vh;
+}
+.block-content{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+}
+.gen-div{
+    width: 100%;
+   
 }
 .products{
     display: flex;
@@ -173,6 +186,7 @@ figure{
      flex-direction: column;
      justify-content: center;
      align-items: center;
+     
 
  }
  /* .shipping-informations .form-group{

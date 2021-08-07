@@ -1,9 +1,10 @@
 .cart{
     
-    /* display: none; */
+    display: none;
     width: 30%;
     height: 80vh;
     border: 1px solid gray;
+    margin-left: auto;
     font-size: .7em;
     background-color: azure;
 }
