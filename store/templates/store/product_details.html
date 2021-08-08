@@ -1,9 +1,22 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-    <section class="shipping-informations flex-col-center">
+    <section class="product-details ">
         
-    <h4>Product Details</h4> 
-    {{ product.product_name }}
+ 
+        <div class="p-image">
+
+        </div>
+        <div class="p-details">
+            <h4>{{ product.product_name }}</h4>
+            <p>Product Code: {{ product.product_code }}</p> 
+            <p>{{product.unit_price}} $</p>
+            {% if product.current_stock >= 0 %}
+                <p> Status : In Stock</p>
+            {% else %}
+            <p> Status : Out of Stock</p>
+            {% endif %}
+        </div>
+    
     </section>
 {% endblock content %}

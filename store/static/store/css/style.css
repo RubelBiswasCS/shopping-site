@@ -186,6 +186,7 @@ figure{
      flex-direction: column;
      justify-content: center;
      align-items: center;
+     width:100%;
      
 
  }
@@ -280,6 +281,30 @@ figure{
     font-size: .80em;
     text-transform: uppercase;
  }
+
+ .product-details{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+ }
+ .p-image{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: aqua;
+     min-height: 100vh;
+     min-width: 50%;
+     width: 50%;
+ }
+ .p-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 148, 209);
+    min-height: 100vh;
+    width: 50%;
+}
 @media only screen and (min-width:1201px){
     /* #about{
         background: rgb(23, 196, 124);
