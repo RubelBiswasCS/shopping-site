@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
+    # product_name,product_code,category,unit_price,current_stock
     product_name = models.CharField(max_length=100)
     product_code = models.IntegerField(unique=True)
     category = models.CharField(max_length=100)
