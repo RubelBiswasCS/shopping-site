@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<section class="shipping-informations flex-col-center">
+        
+    <h4>Update Product</h4>
+    <form method="POST" action="{% url 'add-product' %}" class="form-group">
+        {% csrf_token %}
+        <fieldset class="form-field ">
+            {{ u_p_form.non_field_errors }}
+            {% for field in u_p_form %}
+                <div class="fieldWrapper flex-col-center">
+                    {{ field.errors }}
+                    <div class="field-n-label">
+                        {{ field.label_tag }} {{ field }}
+                    </div>
+                    <!-- {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %} -->
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button class="btn-ls" type="submit">Submit</button>
+    </form>
+       
+    </section>
+{% endblock content %}

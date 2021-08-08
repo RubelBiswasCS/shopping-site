@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Product,Cart,ShippingAddress,OrderItem,Order
-from .forms import ShippingAddressForm,AddProductForm
+from .forms import ShippingAddressForm,AddProductForm,UpdateProductForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponse
 import json
@@ -15,17 +15,36 @@ def home(request):
     }
     template_name = 'store/home.html'
     return render(request, template_name,context)
+
+#add product view
 def add_product(request):
     template_name = 'store/add_product.html'
+    
     if request.method == 'POST':
-        p_form = AddProductForm(request.POST)
+        p_form = UpdateProductForm(request.POST)
         if p_form.is_valid():
             p_form.save()
     else:
-        p_form = AddProductForm()
+        p_form = UpdateProductForm()
     context={
         'p_form':p_form,
     }
+    return render(request, template_name,context)
+
+# update product view
+def update_product(request):
+    template_name = 'store/update_product.html'
+    instance = Product.objects.get(product_code=1001)
+    if request.method == 'POST':
+        u_p_form = AddProductForm(request.POST)
+        if u_p_form.is_valid():
+            u_p_form.save()
+    else:
+        u_p_form = AddProductForm(instance=instance)
+    context={
+        'u_p_form':u_p_form,
+    }
+   
     return render(request, template_name,context)
 # Create your views here.
 def add_to_cart(request):
