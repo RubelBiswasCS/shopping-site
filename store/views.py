@@ -21,11 +21,11 @@ def add_product(request):
     template_name = 'store/add_product.html'
     
     if request.method == 'POST':
-        p_form = UpdateProductForm(request.POST,request.FILES)
+        p_form = AddProductForm(request.POST,request.FILES)
         if p_form.is_valid():
             p_form.save()
     else:
-        p_form = UpdateProductForm()
+        p_form = AddProductForm()
     context={
         'p_form':p_form,
     }
@@ -36,11 +36,11 @@ def update_product(request):
     template_name = 'store/update_product.html'
     instance = Product.objects.get(product_code=1001)
     if request.method == 'POST':
-        u_p_form = AddProductForm(request.POST)
+        u_p_form = UpdateProductForm(request.POST,request.FILES)
         if u_p_form.is_valid():
             u_p_form.save()
     else:
-        u_p_form = AddProductForm(instance=instance)
+        u_p_form = UpdateProductForm(instance=instance)
     context={
         'u_p_form':u_p_form,
     }

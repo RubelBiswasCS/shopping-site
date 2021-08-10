@@ -4,7 +4,7 @@
 <section class="shipping-informations flex-col-center">
         
     <h4>Add Product</h4>
-    <form method="POST" action="{% url 'add-product' %}" class="form-group">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'add-product' %}" class="form-group">
         {% csrf_token %}
         <fieldset class="form-field ">
             {{ p_form.non_field_errors }}
