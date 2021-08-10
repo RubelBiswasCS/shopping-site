@@ -8,7 +8,11 @@
         <div class="product-card">
             <figure class="card-image">
                 {% load static %}
-                <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image">
+                <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
+                -->
+                {% if p.product_img %}
+                <img src="{{ p.product_img.url }}"   />
+                {% endif %}
             </figure>
             <small>{{p.product_name}}</small>
             <p>{{p.unit_price}}$</p>

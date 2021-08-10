@@ -21,7 +21,7 @@ def add_product(request):
     template_name = 'store/add_product.html'
     
     if request.method == 'POST':
-        p_form = UpdateProductForm(request.POST)
+        p_form = UpdateProductForm(request.POST,request.FILES)
         if p_form.is_valid():
             p_form.save()
     else:
