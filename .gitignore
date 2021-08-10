@@ -8,12 +8,13 @@ __pycache__
 myvenv/
 venv/
 
+
 # Database
 db.sqlite3
 
 # Static folder at project root
 /static/
-
+/media/
 # macOS
 ._*
 .DS_Store
