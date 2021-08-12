@@ -99,14 +99,17 @@ def cart_action(request):
     action = request.POST['action']
     # cart_user_id = Cart.objects.get(user__user_id = user_id)
     if request.method=='POST' :
+        product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
         if action == '+':
-            product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
             product.quantity+=1
             product.save()
         elif action == '-':
-            product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
+            
             product.quantity-=1
-            product.save()
+            if product.quantity <= 0:
+                product.delete()
+            else:
+                product.save()
         else:
             pass
         # product.delete()
