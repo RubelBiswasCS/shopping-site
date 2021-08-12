@@ -83,15 +83,15 @@ def add_to_cart(request):
     return HttpResponse(response)
 
 #remove cart item
-def remove_cart_item(request):
-    user_id = request.POST['user_id']
-    product_id = request.POST['product_id']
-    # cart_user_id = Cart.objects.get(user__user_id = user_id)
-    if request.method=='POST' :
-        product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
-        product.delete()
+# def remove_cart_item(request):
+#     user_id = request.POST['user_id']
+#     product_id = request.POST['product_id']
+#     # cart_user_id = Cart.objects.get(user__user_id = user_id)
+#     if request.method=='POST' :
+#         product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
+#         product.delete()
     
-    return HttpResponse("item deleted")
+#     return HttpResponse("item deleted")
 
 def cart_action(request):
     user_id = request.POST['user_id']
@@ -110,6 +110,8 @@ def cart_action(request):
                 product.delete()
             else:
                 product.save()
+        elif action == 'remove':
+            product.delete()
         else:
             pass
         # product.delete()

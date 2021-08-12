@@ -113,7 +113,7 @@
                         var myObj = JSON.parse(response);
                            console.log("Success get data");
                       
-                           console.log(myObj[0].image);
+                        //    console.log(myObj[0].image);
                            $("#cart-items").empty();
                            var total_item = 0;
                            for (var i=0 in myObj){
@@ -148,7 +148,7 @@
 
                       </section>
                       <section class="item-action flex-center">
-                        <button class='rm-cart-item' id='rm-cart-item' value=" ${myObj[i].product_id}">x</button>
+                        <button class='cart-action' data-product="${myObj[i].product_id}" data-action="remove">x</button>
                     </section>
                   </div>`
                   

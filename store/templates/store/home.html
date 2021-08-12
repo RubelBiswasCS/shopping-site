@@ -61,31 +61,6 @@
            });
         //    remove cart item
 
-        $(document).on("click","#rm-cart-item",function(e){
-            // var user_id = '{{ request.user.id }}';
-            var id = $(this).val();
-               e.preventDefault();
-               $.ajax({
-                   method:"POST",
-                   url: "{% url 'remove-cart-item' %}",
-                   data:{
-                        user_id : '{{ request.user.id }}',
-                        product_id : $(this).val(),
-                        csrfmiddlewaretoken: '{{ csrf_token}}',
-
-                        
-                   },
-                   
-                  
-
-                success: function(response){
-                    console.log(response);
-                },
-                error: function(){
-                    console.log("error while delete item");
-                },
-               });
-
-           });
+        
     </script>
 {% endblock %}
