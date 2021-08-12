@@ -58,6 +58,8 @@
         
         <section id="cart" class="cart" >
           <header class="cart-header">
+              <small>Cart</small>
+             
               <button id="close-cart" class="close-cart">
                   x
               </button>
@@ -68,16 +70,16 @@
               <div class="cart-items" id='cart-items'>
                   <!-- <div class="cart-item" id="cart-item">
                       <section class="item-img">
-          
+                        <img src="/media/images/Watch.jpg"  alt= "image" />
                       </section>
-                      <section class="name" id="current-p-name">
-                          
-                      </section>
-                      <section class="price">
-                          
-                      </section>
+                     <section class="cart-items-details">
+                        <p>Rolex</p>
+                        <p>100$</p>
+                     </section>
                       <section class="item-action">
-                          
+                          <button>+</button>
+                          1
+                          <button>-</button>
                       </section>
                   </div> -->
               </div>
@@ -111,25 +113,44 @@
                         var myObj = JSON.parse(response);
                            console.log("Success get data");
                       
-                        //    console.log(myObj[0][0].product_name);
+                           console.log(myObj[0].image);
                            $("#cart-items").empty();
                            var total_item = 0;
                            for (var i=0 in myObj){
                             console.log(myObj[i].product_name);
-                               var temp = `<div class="cart-item" id="cart-item">
-                    <section class="item-unit flex-center">
-                        ${myObj[i].quantity}
-                    </section>
-                    <section class="name flex-center" id="current-p-name">
-                        ${myObj[i].product_name}
-                    </section>
-                    <section class="price flex-center">
-                        ${myObj[i].price}$
-                    </section>
-                    <section class="item-action flex-center">
+                //                var temp = `<div class="cart-item" id="cart-item">
+                //     <section class="item-unit flex-center">
+                //         ${myObj[i].quantity}
+                //     </section>
+                //     <section class="name flex-center" id="current-p-name">
+                //         ${myObj[i].product_name}
+                //     </section>
+                //     <section class="price flex-center">
+                //         ${myObj[i].price}$
+                //     </section>
+                //     <section class="item-action flex-center">
+                //         <button class='rm-cart-item' id='rm-cart-item' value=" ${myObj[i].product_id}">x</button>
+                //     </section>
+                // </div>`;
+
+                        var temp = `<div class="cart-item" id="cart-item">
+                      <section class="item-img">
+                        <img src="${myObj[i].image}"  alt= "image" />
+                      </section>
+                     <section class="cart-items-details">
+                        <p>${myObj[i].product_name}</p>
+                        <p>${myObj[i].unit_price} $</p>
+                     </section>
+                      <section class="item-action">
+                          <button>+</button>
+                          ${myObj[i].quantity}
+                          <button>-</button>
+
+                      </section>
+                      <section class="item-action flex-center">
                         <button class='rm-cart-item' id='rm-cart-item' value=" ${myObj[i].product_id}">x</button>
                     </section>
-                </div>`;
+                  </div>`
                 // $("#cart-items").append("<p>Hi</p>");
                             total_item ++;
                             $("#cart-items").append(temp);

@@ -103,14 +103,24 @@ def cart(request):
     items={}
     i=0
     for item in cart_items:
-        
-        items[i]={
-            'product_id': item.product.pk,
-            'product_name' :item.product.product_name,
-            'price' :item.product.unit_price,
-            'quantity': item.quantity,
-        }
-            
+        if item.product.product_img:
+
+            items[i]={
+                'product_id': item.product.pk,
+                'product_name' :item.product.product_name,
+                'unit_price' :item.product.unit_price,
+                'quantity': item.quantity,
+                'image':item.product.product_img.url,
+            }
+        else:
+            items[i]={
+                'product_id': item.product.pk,
+                'product_name' :item.product.product_name,
+                'unit_price' :item.product.unit_price,
+                'quantity': item.quantity,
+               
+            }    
+                
         
         i+=1
     data = items
