@@ -93,6 +93,26 @@ def remove_cart_item(request):
     
     return HttpResponse("item deleted")
 
+def cart_action(request):
+    user_id = request.POST['user_id']
+    product_id = request.POST['product_id']
+    action = request.POST['action']
+    # cart_user_id = Cart.objects.get(user__user_id = user_id)
+    if request.method=='POST' :
+        if action == '+':
+            product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
+            product.quantity+=1
+            product.save()
+        elif action == '-':
+            product=Cart.objects.get(product__pk=product_id,user__pk=user_id)
+            product.quantity-=1
+            product.save()
+        else:
+            pass
+        # product.delete()
+    response=action
+    return HttpResponse(response)
+
 def cart(request):
     user_id = request.POST['user_id']
 

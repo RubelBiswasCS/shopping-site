@@ -142,20 +142,22 @@
                         <p>${myObj[i].unit_price} $</p>
                      </section>
                       <section class="item-action">
-                          <button>+</button>
+                          <button class="cart-action" data-product="${myObj[i].product_id}" data-action="+">+</button>
                           ${myObj[i].quantity}
-                          <button>-</button>
+                          <button class="cart-action" data-product="${myObj[i].product_id}" data-action="-">-</button>
 
                       </section>
                       <section class="item-action flex-center">
                         <button class='rm-cart-item' id='rm-cart-item' value=" ${myObj[i].product_id}">x</button>
                     </section>
                   </div>`
+                  
                 // $("#cart-items").append("<p>Hi</p>");
                             total_item ++;
                             $("#cart-items").append(temp);
                             
                             console.log("Success call");
+                            
                            };
                            document.getElementById("total-item").innerHTML = total_item.toString();
 
@@ -172,6 +174,34 @@
                },500);
            });
 
+           // cart action 
+           $(document).on("click",".cart-action",function(e){
+            // var user_id = '{{ request.user.id }}';
+            var id = $(this).val();
+               e.preventDefault();
+               $.ajax({
+                   method:"POST",
+                   url: "{% url 'cart-action' %}",
+                   data:{
+                        user_id : '{{ request.user.id }}',
+                        product_id : $(this).data("product"),
+                        action : $(this).data("action"),
+                        csrfmiddlewaretoken: '{{ csrf_token}}',
+
+                        
+                   },
+                   
+                  
+
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(){
+                    console.log("error while delete item");
+                },
+               });
+
+           });
            // show and hide cart
         $("#cart-btn").click(function () {
                 $("#cart").toggle("slow");
