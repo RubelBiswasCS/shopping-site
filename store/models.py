@@ -10,7 +10,7 @@ class Product(models.Model):
     category = models.CharField(max_length=100)
     unit_price = models.FloatField()
     current_stock = models.IntegerField()
-    product_img = models.ImageField(upload_to='images/',blank=True)
+    product_img = models.ImageField(upload_to='images/',blank=True, default="no-product-image.png")
 
     def __str__(self):
         return self.product_name
