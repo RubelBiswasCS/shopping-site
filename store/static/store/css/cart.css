@@ -130,6 +130,8 @@ button.checkout-btn{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgb(138, 104, 87);
+    margin:2px;
 }
 .item-img img{
     width:95%;
