@@ -58,10 +58,10 @@
         
         <section id="cart" class="cart" >
           <header class="cart-header">
-              <small>Cart</small>
+              <small>Shopping Cart</small>
              
               <button id="close-cart" class="close-cart">
-                  x
+                  Close
               </button>
           </header>
           <div class="cart-container" id="cart-container">
@@ -82,15 +82,22 @@
                           <button>-</button>
                       </section>
                   </div> -->
+                 
               </div>
              
-              <form action="{% url 'shipping-address' %}" class="checkout-form">
-                  {% csrf_token %}
-                  <button class="checkout-btn" id="checkout">Checkout</button>
-              </form>
-              <!-- <a href="{% url 'shipping-address' %}" class="checkout-btn" id="checkout">Checkout</a> -->
-              
           </div>
+          <section class="calc-cart">
+            <P>Subtotal: $100</P>
+            <P>Shipping: $0</P>
+            <P>Total: $100</P>
+        </section>
+         
+          <form action="{% url 'shipping-address' %}" class="checkout-form" method="POST">
+              {% csrf_token %}
+              <button class="checkout-btn" id="checkout">Checkout</button>
+          </form>
+          <!-- <a href="{% url 'shipping-address' %}" class="checkout-btn" id="checkout">Checkout</a> -->
+          
       </section>
     </main>
     
@@ -137,19 +144,21 @@
                       <section class="item-img">
                         <img src="${myObj[i].image}"  alt= "image" />
                       </section>
-                     <section class="cart-items-details">
+                     <section class="cart-item-sec-2">
                         <p>${myObj[i].product_name}</p>
-                        <p>${myObj[i].unit_price} $</p>
-                     </section>
-                      <section class="item-action">
-                          <button class="cart-action" data-product="${myObj[i].product_id}" data-action="+">+</button>
+                        <div class="quantity_n_actions">
+                            <button class="cart-action" data-product="${myObj[i].product_id}" data-action="+">+</button>
                           ${myObj[i].quantity}
                           <button class="cart-action" data-product="${myObj[i].product_id}" data-action="-">-</button>
+                            </div>
+                        
+                     </section>
+                      <section class="cart-item-sec-3">
+                        <p>${myObj[i].unit_price} $</p>
+                        <button class='cart-action' data-product="${myObj[i].product_id}" data-action="remove">Remove</button>
 
                       </section>
-                      <section class="item-action flex-center">
-                        <button class='cart-action' data-product="${myObj[i].product_id}" data-action="remove">x</button>
-                    </section>
+                      
                   </div>`
                   
                 // $("#cart-items").append("<p>Hi</p>");
