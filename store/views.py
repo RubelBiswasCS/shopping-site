@@ -127,15 +127,18 @@ def cart(request):
         cart_items = Cart.objects.filter(user=user)
     items={}
     i=0
+    total_price = 0
     for item in cart_items:
         if item.product.product_img:
-
+            price = item.quantity * item.product.unit_price
+            total_price += price
             items[i]={
                 'product_id': item.product.pk,
                 'product_name' :item.product.product_name,
                 'unit_price' :item.product.unit_price,
                 'quantity': item.quantity,
                 'image':item.product.product_img.url,
+                'price': price,
             }
         else:
             items[i]={
@@ -143,12 +146,13 @@ def cart(request):
                 'product_name' :item.product.product_name,
                 'unit_price' :item.product.unit_price,
                 'quantity': item.quantity,
-               
+               'price': price,
             }    
                 
         
         i+=1
-    data = items
+    # data = items
+    data = [total_price,items]
     # items=[]
     # for i in cart_items:
     #     items.append(i.product.product_name)

@@ -87,9 +87,9 @@
              
           </div>
           <section class="calc-cart">
-            <P>Subtotal: $100</P>
+            <P>Subtotal: $<small id="subtotal">100</small></P>
             <P>Shipping: $0</P>
-            <P>Total: $100</P>
+            <P>Total: $<small id="total">100</small></P>
         </section>
          
           <form action="{% url 'shipping-address' %}" class="checkout-form" method="POST">
@@ -119,12 +119,14 @@
 
                         var myObj = JSON.parse(response);
                            console.log("Success get data");
+                           document.getElementById("subtotal").innerHTML = myObj[0];
+                           document.getElementById("total").innerHTML = myObj[0];
                       
                         //    console.log(myObj[0].image);
                            $("#cart-items").empty();
                            var total_item = 0;
-                           for (var i=0 in myObj){
-                            console.log(myObj[i].product_name);
+                           for (var i=0 in myObj[1]){
+                            console.log(myObj[1][i].product_name);
                 //                var temp = `<div class="cart-item" id="cart-item">
                 //     <section class="item-unit flex-center">
                 //         ${myObj[i].quantity}
@@ -142,20 +144,20 @@
 
                         var temp = `<div class="cart-item" id="cart-item">
                       <section class="item-img">
-                        <img src="${myObj[i].image}"  alt= "image" />
+                        <img src="${myObj[1][i].image}"  alt= "image" />
                       </section>
                      <section class="cart-item-sec-2">
-                        <p>${myObj[i].product_name}</p>
+                        <p>${myObj[1][i].product_name}</p>
                         <div class="quantity_n_actions">
-                            <button class="cart-action" data-product="${myObj[i].product_id}" data-action="+">+</button>
-                          ${myObj[i].quantity}
-                          <button class="cart-action" data-product="${myObj[i].product_id}" data-action="-">-</button>
+                            <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="+">+</button>
+                          ${myObj[1][i].quantity}
+                          <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="-">-</button>
                             </div>
                         
                      </section>
                       <section class="cart-item-sec-3">
-                        <p>${myObj[i].unit_price} $</p>
-                        <button class='cart-action' data-product="${myObj[i].product_id}" data-action="remove">Remove</button>
+                        <p>${myObj[1][i].price} $</p>
+                        <button class='cart-action' data-product="${myObj[1][i].product_id}" data-action="remove">Remove</button>
 
                       </section>
                       
@@ -165,10 +167,12 @@
                             total_item ++;
                             $("#cart-items").append(temp);
                             
+                            
                             console.log("Success call");
                             
                            };
                            document.getElementById("total-item").innerHTML = total_item.toString();
+                           
 
                            
                            
