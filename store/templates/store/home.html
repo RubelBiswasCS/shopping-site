@@ -14,8 +14,10 @@
                 <img src="{{ p.product_img.url }}"   />
                 {% endif %}
             </figure>
-            <small>{{p.product_name}}</small>
-            <p>{{p.unit_price}}$</p>
+            <div class="card-item-details">
+                <p class="p-name">{{p.product_name}}</p>
+                <p>{{p.unit_price}}$</p>
+            </div>
             <button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>
         </div>
         {% endfor %}

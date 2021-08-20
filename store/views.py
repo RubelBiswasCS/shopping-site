@@ -121,7 +121,8 @@ def cart_action(request):
 def cart(request):
     user_id = request.POST['user_id']
 
-    user = User.objects.get(pk=user_id)
+    user = User.objects.get(pk=1)
+    
     # cart_items = Cart.objects.filter(user=user)
     if request.method == 'POST' :
         cart_items = Cart.objects.filter(user=user)
@@ -151,7 +152,7 @@ def cart(request):
                 
         
         i+=1
-    # data = items
+    data = items
     data = [total_price,items]
     # items=[]
     # for i in cart_items:

@@ -24,7 +24,7 @@ class Cart(models.Model):
     # completed = models.BooleanField(default=False)
 
     def __str__(self):
-        obj_name = self.user.username +'_'+ self.product.product_name
+        obj_name = self.user.username
         return obj_name
 
     # @property
