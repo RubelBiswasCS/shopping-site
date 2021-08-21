@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital@1&display=swap');
 .cart{
     
-    /* display: none; */
+    display: none;
     width: 30%;
     height: 80vh;
     border: 1px solid gray;
@@ -11,7 +11,7 @@
     background-color: rgb(238, 215, 186);
     border: 1px solid rgb(47, 175, 175);
     border-radius: 15px 15px;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     flex-direction: column;
