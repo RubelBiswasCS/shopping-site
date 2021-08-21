@@ -256,3 +256,7 @@ def order_overview(request):
     }
     template_name = 'store/order_details.html'
     return render(request, template_name,context)
+
+def dashboard(request):
+    template_name = 'store/dashboard.html'
+    return render(request, template_name)
