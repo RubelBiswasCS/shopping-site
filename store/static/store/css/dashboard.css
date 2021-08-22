@@ -11,6 +11,7 @@
 .navigation-bar{
     
     /* width: auto; */
+    margin: 0;
     display: flex;
     flex-direction: column;
     /* justify-content:  center; */
@@ -21,42 +22,94 @@
     border-right: 1px solid gray;
 }
 ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
-    padding:5px;
+    padding:0;
     list-style: none;
     width: 100%;
 }
 li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     list-style: none;
     width: 100%;
-    text-align: center;
+    min-height: 2vh;
+    margin: 0;
+    padding:0;
+    height: 5vh;
+    /* background-color: aquamarine; */
+    
     border:none;
 }
 .dashboard a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     text-decoration: none;
+    background-color: whitesmoke;
+    color: darkblue;
     border: 1px solid black;
-    text-align: center;
-    width: 90%;
-    min-height: 20px;
+    margin:0;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    height: 100%;
+    
 }
 .dashboard span{
-
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border:none;
     margin: 0;
-    min-height: 10vh;
+    padding:10px;
+    
+    /* min-height: 5vh; */
 }
 .dashboard span.nav-icon{
+    /* width:30%; */
+    width: 5vw;
+    /* height: 60%; */
+    height: 10px;
+    padding:10px 20px 10px 20px;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+#nav-overview{
+    background-color: brown;
+    background: url('/static/store/icons/overview.svg');
     
-    width:6%;
+}
+#nav-products{
+    background-color: brown;
+    background: url('/static/store/icons/product.svg');
     
-    min-width: 4%;
+}
+#nav-orders{
+    background-color: brown;
+    background: url('/static/store/icons/orders.svg');
+    
+}
+#nav-customers{
+    background-color: brown;
+    background: url('/static/store/icons/customers.svg') ;
+    
 }
 .dashboard span.nav-name{
-    display: none;
-    width: 14%;
-    
-    min-width: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* display: none; */
+    width: 15vw;
+    /* min-width: 70%; */
+    padding:5px;
+    /* background-color: cadetblue; */
+    font-size: .8em;
 
 }
+
 
