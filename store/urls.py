@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import ProductListView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -22,6 +23,7 @@ urlpatterns = [
     path('delete-product',views.delete_product,name='delete-product'),
     path('product-details',views.product_details,name='product-details'),
     path('dashboard',views.dashboard,name='dashboard'),
+    path('product-list', ProductListView.as_view(), name='product-list'),
 ]
 
 if settings.DEBUG:

@@ -88,7 +88,7 @@ li{
     background: url('/static/store/icons/overview.svg');
     
 }
-#nav-products{
+.icon-products{
     background-color: brown;
     background: url('/static/store/icons/product.svg');
     
@@ -132,3 +132,14 @@ li{
     color:rgb(9, 54, 80) !important;
 }
 
+
+.db-content{
+    display: flex;
+    flex-direction: column;
+    /* justify-content:  center; */
+    align-items: center;
+    width: auto;
+    min-width: 85vw;
+    min-height: 100vh;
+    background-color: rgb(199, 122, 122);
+}

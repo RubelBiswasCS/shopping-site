@@ -1,0 +1,8 @@
+<h1>Products</h1>
+<ul>
+{% for product in object_list %}
+    <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li>
+{% empty %}
+    <li>No product yet.</li>
+{% endfor %}
+</ul>

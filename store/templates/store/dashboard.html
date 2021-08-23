@@ -16,8 +16,8 @@
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span id="nav-products" class="nav-icon">
+                    <a id="nav-products" >
+                        <span  class="nav-icon icon-products">
                             
                         </span>
                         <span class="nav-name">
@@ -68,5 +68,21 @@
                 </li>
             </ul>
         </section>
+
+        <section id="db-content" class="db-content">
+            
+        </section>
     </div>
+
+    <script>
+        $(document).ready(function() {
+  $("#nav-products").on("click", function() {
+    $('#db-content').load("{% url 'product-list' %} ",
+            function () {
+            //   alert("Load was performed.");
+            });
+          });
+});
+    </script>
+
 {% endblock content %}

@@ -6,6 +6,8 @@ from django.http import JsonResponse,HttpResponse
 import json
 import datetime
 
+from django.views.generic.list import ListView
+
 
 def home(request):
     products = Product.objects.all()
@@ -260,3 +262,14 @@ def order_overview(request):
 def dashboard(request):
     template_name = 'store/dashboard.html'
     return render(request, template_name)
+
+class ProductListView(ListView):
+
+    model = Product
+    # paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['now'] = timezone.now()
+        return context
+
