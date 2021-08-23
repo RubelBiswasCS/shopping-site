@@ -22,7 +22,7 @@
 
     /* background-color: rgb(207, 175, 175); */
     /* border-right: 1px solid gray; */
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 15px 15px 15px 15px;
 }
 ul{
     display: flex;
@@ -103,11 +103,21 @@ li{
     background: url('/static/store/icons/customers.svg') ;
     
 }
+#nav-messages{
+    background-color: brown;
+    background: url('/static/store/icons/messages.svg') ;
+    
+}
+#nav-settings{
+    background-color: brown;
+    background: url('/static/store/icons/settings.svg') ;
+    
+}
 .dashboard span.nav-name{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    display: none;
+    /* display: none; */
     width: 12vw;
     /* min-width: 70%; */
     padding:5px;
