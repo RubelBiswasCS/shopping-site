@@ -1,7 +1,15 @@
 <h1>Products</h1>
 <ul>
 {% for product in object_list %}
-    <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li>
+    <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
+    <li class="dash-product">
+        <div>1</div>
+        <div>image</div>
+        <div class="dash-product-name">{{ product.product_name }}</div>
+        <div>{{ product.product_code }}</div>
+        <div>{{ product.unit_price }}</div>
+        <div>{{ product.current_stock }}</div>
+    </li>
 {% empty %}
     <li>No product yet.</li>
 {% endfor %}
