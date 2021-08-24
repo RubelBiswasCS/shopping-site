@@ -264,7 +264,6 @@ def dashboard(request):
     return render(request, template_name)
 
 class ProductListView(ListView):
-
     model = Product
     # paginate_by = 100  # if pagination is desired
 
@@ -274,7 +273,6 @@ class ProductListView(ListView):
         return context
 
 class OrderListView(ListView):
-
     model = Order
     # paginate_by = 100  # if pagination is desired
 
@@ -282,4 +280,13 @@ class OrderListView(ListView):
         context = super().get_context_data(**kwargs)
         # context['now'] = timezone.now()
         return context
+
+def dashboard_overview(request):
+    template_name = 'store/dashboard_overview.html'
+    recent_orders = Order.objects.all()[0:5]
+    context = {
+        'recent_orders' : recent_orders,
+    }
+
+    return render(request,template_name,context)
 

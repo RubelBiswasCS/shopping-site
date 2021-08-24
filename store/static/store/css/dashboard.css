@@ -84,7 +84,7 @@ li{
     background-position: center center !important;
     background-repeat: no-repeat !important;
 }
-#nav-overview{
+.nav-overview{
     background-color: brown;
     background: url('/static/store/icons/overview.svg');
     
@@ -154,6 +154,17 @@ li{
     justify-content: space-around;
     height: 10vh;
 }
+.dash-overview{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.recent-orders{
+    width: 60%;
+    height: 45vh;
+}
 .dash-product-list{
     display: flex;
     flex-direction: column;
@@ -172,6 +183,7 @@ li{
     color:rgb(13, 103, 126);
     font-size: 1.2em;
 }
+
 .dash-product div{
     display: flex;
     justify-content: center;
@@ -179,6 +191,11 @@ li{
     width: 10%;
     /* border-left: 1px solid black; */
     /* border-right: 1px solid black; */
+}
+.dashboard div.delivery-status{
+    border: 1px solid peachpuff;
+    padding: 5px;
+    background-color: rgb(255,255,204);
 }
 div.dash-product-name{
     min-width: 25%;

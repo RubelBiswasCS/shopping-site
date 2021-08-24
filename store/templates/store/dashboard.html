@@ -5,8 +5,8 @@
         <section class="navigation-bar">
             <ul>
                 <li>
-                    <a href="#" class="dash-nav nav-active">
-                        <span id = "nav-overview" class="nav-icon ">
+                    <a id = "nav-overview" class="dash-nav nav-active">
+                        <span  class="nav-icon nav-overview">
                             
                         </span>
                         <span class="nav-name">
@@ -71,10 +71,22 @@
 
         <section id="db-content" class="db-content">
             
+            
         </section>
     </div>
 
     <script>
+
+
+// nav-overview function
+$(document).ready(function() {
+  $("#nav-overview").on("click", function() {
+    $('#db-content').load("{% url 'dashboard-overview' %} ",
+            function () {
+            //   alert("Load was performed.");
+            });
+          });
+});
 
         // nav-products function
         $(document).ready(function() {

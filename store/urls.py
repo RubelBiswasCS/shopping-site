@@ -25,6 +25,7 @@ urlpatterns = [
     path('dashboard',views.dashboard,name='dashboard'),
     path('product-list', ProductListView.as_view(), name='product-list'),
     path('order-list', OrderListView.as_view(), name='order-list'),
+    path('dashboard-overview', views.dashboard_overview, name='dashboard-overview'),
 ]
 
 if settings.DEBUG:
