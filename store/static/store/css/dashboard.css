@@ -94,7 +94,7 @@ li{
     background: url('/static/store/icons/product.svg');
     
 }
-#nav-orders{
+.nav-orders{
     background-color: brown;
     background: url('/static/store/icons/orders.svg');
     
@@ -142,11 +142,12 @@ li{
     width: auto;
     min-width: 84vw;
     min-height: 100vh;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     background-color: aliceblue;
+    font-size: 16px;
 }
 .db-content h1{
-    background-color: rgb(236, 218, 195);
+    background-color: rgb(134, 200, 209);
     width: 100%;
     display: flex;
     align-items: center;

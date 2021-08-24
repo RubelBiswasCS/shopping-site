@@ -1,0 +1,25 @@
+<h1>Orders</h1>
+<ul>
+    <li class="dash-product first-row">
+        <div>SL</div>
+        <div>Transaction ID</div>
+        <div>Customer</div>
+        <div >Pricing</div>
+        <div>Delivery Date</div>
+        <div>Payment Method</div>
+       
+    </li>
+{% for order in object_list %}
+    <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
+    <li class="dash-product">
+        <div>{{ forloop.counter }}</div>
+        <div>{{order.transaction_id}}</div>
+        <div >{{ order.user }}</div>
+        <div>100%</div>
+        <div>10-10-2021</div>
+        <div>Cash on Delivery</div>
+    </li>
+{% empty %}
+    <li>No product yet.</li>
+{% endfor %}
+</ul>

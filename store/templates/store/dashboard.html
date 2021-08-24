@@ -27,8 +27,8 @@
                 </li>
 
                 <li>
-                    <a href="#" class="dash-nav">
-                        <span id="nav-orders" class="nav-icon">
+                    <a id="nav-orders" class="dash-nav">
+                        <span  class="nav-icon nav-orders">
                             
                         </span>
                         <span class="nav-name">
@@ -75,6 +75,8 @@
     </div>
 
     <script>
+
+        // nav-products function
         $(document).ready(function() {
   $("#nav-products").on("click", function() {
     $('#db-content').load("{% url 'product-list' %} ",
@@ -84,6 +86,18 @@
           });
 });
 
+  // nav-orders function
+  $(document).ready(function() {
+  $("#nav-orders").on("click", function() {
+    $('#db-content').load("{% url 'order-list' %} ",
+            function () {
+            //   alert("Load was performed.");
+            });
+          });
+});
+
+
+//funciton for heighlight active nav
 $(document).ready(function() {
     $('.dash-nav').click(function() {
       $('.dash-nav').removeClass('nav-active');
