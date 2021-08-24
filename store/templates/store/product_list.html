@@ -1,9 +1,17 @@
 <h1>Products</h1>
 <ul>
+    <li class="dash-product first-row">
+        <div>SL</div>
+        <div>Image</div>
+        <div class="dash-product-name">Product</div>
+        <div>Product Code</div>
+        <div>Unit Price</div>
+        <div>Current Stock</div>
+    </li>
 {% for product in object_list %}
     <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
     <li class="dash-product">
-        <div>1</div>
+        <div>{{ forloop.counter }}</div>
         <div>image</div>
         <div class="dash-product-name">{{ product.product_name }}</div>
         <div>{{ product.product_code }}</div>
