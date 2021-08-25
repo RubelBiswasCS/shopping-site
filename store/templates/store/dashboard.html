@@ -78,7 +78,15 @@
     <script>
 
 
-
+// nav-overview on load function
+$(document).ready(function() {
+  
+    $('#db-content').load("{% url 'dashboard-overview' %} ",
+            function () {
+            //   alert("Load was performed.");
+            });
+        
+});
 
 // nav-overview function
 $(document).ready(function() {
