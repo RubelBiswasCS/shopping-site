@@ -161,9 +161,20 @@ li{
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.recent-orders{
-    width: 60%;
-    height: 45vh;
+.do_sec_1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 66%;
+}
+.do_sec_2{
+    width: 33%;
+}
+.recent-orders, .top_products{
+    /* min-width: 60%; */
+    width: 100%;
+    height: 35vh;
 }
 .dash-product-list{
     display: flex;

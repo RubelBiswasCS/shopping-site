@@ -26,6 +26,7 @@ urlpatterns = [
     path('product-list', ProductListView.as_view(), name='product-list'),
     path('order-list', OrderListView.as_view(), name='order-list'),
     path('dashboard-overview', views.dashboard_overview, name='dashboard-overview'),
+    path('piechart',views.piechart,name='piechart'),
 ]
 
 if settings.DEBUG:
