@@ -301,13 +301,44 @@ import random
 # Pie Chart
 def piechart(request):
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-    labels = 'Sale', 'Purchase'
+    # labels = 'Sale', 'Purchase', 'Test'
+    labels = []
+    products = Product.objects.all()
+    for i in products:
+        if i.category not in labels:
+            labels.append(i.category)
+    
     sizes = [random.randint(10,30), random.randint(30,50)]
-    explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    # explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    explode = None
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.savefig('media/sale_purchase_peichart.png',dpi=100)
+    plt.savefig('media/piechart.png',dpi=100, transparent=True)
     return render(request,'store/piechart.html')
 
+
+def barchart(request):
+    labels = ['G1', 'G2', 'G3', 'G4', 'G5']
+    men_means = [20, 35, 30, 35, 27]
+    women_means = [25, 32, 34, 20, 25]
+    men_std = [2, 3, 4, 1, 2]
+    women_std = [3, 5, 2, 3, 3]
+    width = 0.35       # the width of the bars: can also be len(x) sequence
+
+    fig, ax = plt.subplots()
+
+    ax.bar(labels, men_means, width, yerr=men_std, label='Men')
+    ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
+        label='Women')
+
+    ax.set_ylabel('Scores')
+    ax.set_title('Scores by group and gender')
+    ax.legend()
+
+    plt.savefig('media/barchart.png',dpi=100, transparent=True)
+
+    return HttpResponse()
+    # return render(request,'store/barchart.html')
+    

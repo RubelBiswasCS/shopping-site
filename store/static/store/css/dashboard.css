@@ -169,7 +169,14 @@ li{
     width: 66%;
 }
 .do_sec_2{
-    width: 33%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.top_category img, .sales-barchart img{
+    width: 100%;
 }
 .recent-orders, .top_products{
     /* min-width: 60%; */

@@ -56,11 +56,43 @@
 
 </section> 
 <section class="do_sec_2">
-    <div class="top_category">
-        
+    <div id="top_category" class="top_category">
+
     </div>
-    <div></div>
+    <div id="sales-barchart" class="sales-barchart">
+        <p>barchart</p>
+        <img src="./media/barchart.png" />
+    </div>
 
 </section> 
 
+
 </div>
+<script>
+    //function to load pie chart for top products
+
+$(document).ready(function() {
+  
+  $('#top_category').load("{% url 'piechart' %} ",
+          function () {
+          //   alert("Load was performed.");
+          });
+
+          // function for update barchart
+        //   $('#sales-barchart').load("{% url 'barchart' %} ",
+        //   function () {
+        //   //   alert("Load was performed.");
+        //   });
+        
+});
+
+// function for update barchart
+// $(document).ready(function() {
+  
+//   $('#sales-barchart').load("{% url 'barchart' %} ",
+//           function () {
+//           //   alert("Load was performed.");
+//           });
+        
+// });
+</script>
