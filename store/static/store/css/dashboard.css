@@ -6,6 +6,7 @@
     min-width: 100%;
     min-height: 100vh;
     background-color: aliceblue;
+    
 }
 
 .navigation-bar{
@@ -23,6 +24,7 @@
     /* background-color: rgb(207, 175, 175); */
     /* border-right: 1px solid gray; */
     border-radius: 15px 15px 15px 15px;
+   
 }
 ul{
     display: flex;
@@ -39,7 +41,7 @@ li{
     justify-content: center;
     list-style: none;
     width: 100%;
-    min-height: 6vh;
+    /* min-height: 6vh; */
     margin: 0;
     padding:0;
     height: 5vh;
@@ -135,15 +137,20 @@ li{
 
 
 .db-content{
+    box-sizing: border-box;
+    /* padding:20px; */
+    margin:0px;
     display: flex;
     flex-direction: column;
     /* justify-content:  center; */
     align-items: center;
+    justify-content: start;
     width: auto;
     min-width: 84vw;
     min-height: 100vh;
     /* padding-top: 10px; */
     background-color: aliceblue;
+    /* background-color: salmon; */
     font-size: 16px;
 }
 .db-content h1{
@@ -151,37 +158,80 @@ li{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    height: 10vh;
+    justify-content: center;
+    
 }
 .dash-overview{
     height: 100%;
     width: 100%;
+    margin:0px;
+    padding:0px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    /* background-color: red; */
 }
 .do_sec_1{
+    box-sizing: border-box;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 20px;
+    margin:0px;
+    padding:20px;
+    padding-top:0px;
+    padding-bottom:0px;
     width: 66%;
+    border-left: 3px solid;
+    border-right: 3px solid;
+    border-color: rgb(208, 221, 223, .4);
 }
 .do_sec_2{
-    width: 30%;
+    box-sizing: border-box;
+    margin:0px;
+    padding:20px;
+    padding-top:0px;
+    padding-bottom:0px;
+    width: 34%;
+    gap: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.top_category, .sales-barchart{
+    margin:0px;
+    padding:10px;
+    border: 3px solid gray;
+    border-color: rgb(208, 221, 223, .4);
 }
 .top_category img, .sales-barchart img{
     width: 100%;
 }
 .recent-orders, .top_products{
     /* min-width: 60%; */
+    margin:0px;
+    padding:10px;
     width: 100%;
     height: 35vh;
+    border: 3px solid gray;
+    border-color: rgb(208, 221, 223, .4);
+}
+.recent-orders ul, .top_products ul{
+    height: 86%;
+    
+    margin:0px;
+}
+.dash-overview h5{
+    height: 14%;
+    margin:0;
+}
+.recent-orders li, .top_products li{
+    height: 16%;
+    /* background-color: salmon; */
 }
 .dash-product-list{
     display: flex;
@@ -194,25 +244,28 @@ li{
     justify-content: flex-start;
     background-color: azure;
     margin:1px;
-    
+    height: 16%;
 }
 .first-row{
     background-color: bisque;
     color:rgb(13, 103, 126);
     font-size: 1.2em;
+    /* height: 14%; */
 }
 
 .dash-product div{
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    padding:10px;
+    /* padding:10%; */
     width: 10%;
     /* border-left: 1px solid black; */
     /* border-right: 1px solid black; */
 }
 .dashboard div.delivery-status{
+    box-sizing: border-box;
     border: 1px solid peachpuff;
-    padding: 5px;
+    padding: 0px;
     background-color: rgb(255,255,204);
 }
 div.dash-product-name{
