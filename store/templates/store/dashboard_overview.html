@@ -1,6 +1,22 @@
 <div class="dash-overview">
 <section class="do_sec_1">
-    
+    <div class="mini-summary">
+        <ul>
+            <li class="total-sales">
+                <strong>20000$</strong>
+                <p>Total Sales</p>
+            </li>
+            <li class="total-sales">
+                <p>Total Sales</p>
+            </li>
+            <li class="total-sales">
+                <p>Total Sales</p>
+            </li>
+            <li class="total-sales">
+                <p>Total Sales</p>
+            </li>
+        </ul>
+    </div>
     <div class="recent-orders">
         <h5>Recent Orders</h5>
         <ul>
@@ -62,7 +78,7 @@
     </div>
     <div id="sales-barchart" class="sales-barchart">
         <h5>Sales in this week</h5>
-        <img src="./media/barchart.png" />
+        <!-- <img src="./media/barchart.png" /> -->
     </div>
 
 </section> 
@@ -73,19 +89,20 @@
     //function to load pie chart for top products
 
 $(document).ready(function() {
-  
+    $("#top_category").empty();
   $('#top_category').load("{% url 'piechart' %} ",
           function () {
           //   alert("Load was performed.");
           });
-
-          // function for update barchart
-        //   $('#sales-barchart').load("{% url 'barchart' %} ",
-        //   function () {
-        //   //   alert("Load was performed.");
-        //   });
         
-});
+    // function for update barchart
+    $('#sales-barchart').empty();
+    $('#sales-barchart').load("{% url 'barchart' %} ",
+            function () {
+            //   alert("Load was performed.");
+            });
+        
+    });
 
 // function for update barchart
 // $(document).ready(function() {
@@ -96,4 +113,6 @@ $(document).ready(function() {
 //           });
         
 // });
+
+
 </script>
