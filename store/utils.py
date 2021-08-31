@@ -22,10 +22,10 @@ def draw_piechart(products):
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.savefig('media/piechart.png',dpi=100, transparent=True)
-    plt.show()
+    fig1.savefig('media/piechart.png',dpi=100, transparent=True)
     
-from matplotlib import pyplot as plt2
+    
+
 def draw_barchart():
     
    
@@ -36,7 +36,7 @@ def draw_barchart():
     women_std = [3, 5, 2, 3, 3]
     width = 0.35       # the width of the bars: can also be len(x) sequence
 
-    fig, ax = plt2.subplots()
+    fig, ax = plt.subplots()
 
     ax.bar(labels, men_means, width, yerr=men_std, label='Men')
     ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
@@ -46,6 +46,7 @@ def draw_barchart():
     ax.set_title('Scores by group and gender')
     ax.legend()
 
-    plt2.savefig('media/barchart.png',dpi=100, transparent=True)
+    fig.savefig('media/barchart.png',dpi=100, transparent=True)
+
     
 
