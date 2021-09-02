@@ -302,8 +302,8 @@ figure{
      justify-content: center;
      background-color: aqua;
      min-height: 100vh;
-     min-width: 50%;
-     width: 50%;
+     min-width: 40%;
+     width: 40%;
      
  }
  .p-details{
@@ -313,7 +313,7 @@ figure{
     justify-content: flex-start;
     background-color: #fff;
     min-height: 100vh;
-    width: 50%;
+    width: 60%;
     padding:20px;
 }
 .p-details h1{
