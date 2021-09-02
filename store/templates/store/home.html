@@ -1,4 +1,6 @@
+
 {% extends 'store/base.html' %}
+{% load static %} 
 
 {% block content %}
 <div class="gen-div">
@@ -17,8 +19,8 @@
             <div class="card-item-details">
                 <p class="p-name">{{p.product_name}}</p>
                 <p>{{p.unit_price}}$</p>
-            </div>
-            <button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>
+<button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>            </div>
+            
         </div>
         {% endfor %}
         <!-- <div id="cart" style="height:100px; width:100px; background: red;">
@@ -29,38 +31,51 @@
     </section>
     
 </div>
+<script src = {% static "store/js/store.js" %}></script>
     <script>
-        
-           
-
-        //fuction for add item to the cart
+        // $(document).on("click","#add-btn",function(e){
+        //     test('rubel');
+        // });
         $(document).on("click","#add-btn",function(e){
-            // var user_id = '{{ request.user.id }}';
-            var id = $(this).val();
-               e.preventDefault();
-               $.ajax({
-                   method:"POST",
-                   url: "{% url 'add-to-cart' %}",
-                   data:{
-                        user_id : '{{ request.user.id }}',
-                        product_id : $(this).val(),
-                        csrfmiddlewaretoken: '{{ csrf_token}}',
+            e.preventDefault();
+        var args = {
+            url: "{% url 'add-to-cart' %}",
+            user_id : '{{ request.user.id }}',
+            product_id : $(this).val(),
+            csrfmiddlewaretoken: '{{ csrf_token}}',
+        };
+        addToCart(args);
+    });
+
+        // //fuction for add item to the cart
+        // $(document).on("click","#add-btn",function(e){
+        //     // var user_id = '{{ request.user.id }}';
+        //     var id = $(this).val();
+        //        e.preventDefault();
+        //        $.ajax({
+        //            method:"POST",
+        //            url: "{% url 'add-to-cart' %}",
+        //            data:{
+        //                 user_id : '{{ request.user.id }}',
+        //                 product_id : $(this).val(),
+        //                 csrfmiddlewaretoken: '{{ csrf_token}}',
 
                         
-                   },
+        //            },
                    
-                success: function(response){
-                    var myObj = JSON.parse(response);
-                    console.log(myObj.user_id+' '+myObj.product_id);
-                    console.log('data successfully send');
-                },
+        //         success: function(response){
+        //             var myObj = JSON.parse(response);
+        //             console.log(myObj.user_id+' '+myObj.product_id);
+        //             console.log('data successfully send');
+        //         },
 
-                error: function(){
-                    console.log("something went wrong");
-                },
-               });
+        //         error: function(){
+        //             console.log("something went wrong");
+        //         },
+        //        });
 
-           });
+        //    });
+        
         //    remove cart item
 
         
