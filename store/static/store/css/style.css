@@ -304,15 +304,23 @@ figure{
      min-height: 100vh;
      min-width: 50%;
      width: 50%;
+     
  }
  .p-details{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(167, 148, 209);
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #fff;
     min-height: 100vh;
     width: 50%;
+    padding:20px;
+}
+.p-details h1{
+    font-family: source sans pro,sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #000;
 }
 @media only screen and (min-width:1201px){
     /* #about{

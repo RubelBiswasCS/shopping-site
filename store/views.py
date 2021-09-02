@@ -52,7 +52,7 @@ def update_product(request):
 # product details view
 def product_details(request):
     template_name = 'store/product_details.html'
-    product = Product.objects.get(pk=5)
+    product = Product.objects.get(pk=11)
     context={
         'product':product,
     }
@@ -292,12 +292,6 @@ def dashboard_overview(request):
 
     return render(request,template_name,context)
 
-# import matplotlib
-# matplotlib.use('Agg')
-# from matplotlib import pyplot as plt
-# import numpy as np
-# # from random import random, randint
-# import random
 
 from .utils import draw_piechart,draw_barchart
 # # Pie Chart
