@@ -16,13 +16,7 @@ var addToCart = function(args) {
            $.ajax({
                method:"POST",
                url: args.url,
-               data:{
-                    user_id : args.user_id,
-                    product_id : args.product_id,
-                    csrfmiddlewaretoken: args. csrfmiddlewaretoken,
-    
-                    
-               },
+               data:args.data,
                
             success: function(response){
                 var myObj = JSON.parse(response);

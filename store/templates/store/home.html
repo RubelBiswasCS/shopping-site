@@ -40,9 +40,11 @@
             e.preventDefault();
         var args = {
             url: "{% url 'add-to-cart' %}",
-            user_id : '{{ request.user.id }}',
-            product_id : $(this).val(),
-            csrfmiddlewaretoken: '{{ csrf_token}}',
+            data: {
+                user_id : '{{ request.user.id }}',
+                product_id : $(this).val(),
+                csrfmiddlewaretoken: '{{ csrf_token}}',
+            },
         };
         addToCart(args);
     });
