@@ -29,7 +29,7 @@
                     <span>1</span>
                 </div>
                 <div>
-                    <button id="add-btn" value="{{ product.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>
+                    <button id="add-btn2" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" > Add to Cart</button>
                 </div>
             </div>
 

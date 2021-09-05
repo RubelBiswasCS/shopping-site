@@ -62,7 +62,7 @@ def delete_product(request):
     return HttpResponse("Product")
 # Create your views here.
 def add_to_cart(request):
-    user_id = request.POST['user_id']
+    user_id = request.user.id
     product_id = request.POST['product_id']
     if request.method=='POST':
         product=Product.objects.get(pk=product_id)
@@ -96,7 +96,8 @@ def add_to_cart(request):
 #     return HttpResponse("item deleted")
 
 def cart_action(request):
-    user_id = request.POST['user_id']
+    # user_id = request.POST['user_id']
+    user_id = request.user.id
     product_id = request.POST['product_id']
     action = request.POST['action']
     # cart_user_id = Cart.objects.get(user__user_id = user_id)
