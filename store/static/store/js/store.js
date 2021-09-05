@@ -73,20 +73,32 @@ $(".add-btn").on("click",function(e){
         });      
 }
 
+ // cart action 
+ $(document).on("click",".cart-action",function(e){
+    // var user_id = '{{ request.user.id }}';
+    // var id = $(this).val();
+       e.preventDefault();
+       $.ajax({
+           method:"POST",
+           url: $(this).data("url"),
+           data:{
+                product_id : $(this).data("product"),
+                action : $(this).data("action"),
+                csrfmiddlewaretoken: csrf_token, 
+           },
+           
+          
 
-// var btns = document.getElementById('add-btn2');
+        success: function(response){
+            console.log(response);
+        },
+        error: function(){
+          console.log("error");
+            console.log("error while performing action");
+        },
+       });
 
-    
-
-// btns.addEventListener('click', function(){
-//     alert("btn clicked");
-//     console.log('clicked')
-// });
-// $(document).on("click",".add-btn",function(e){
-//     e.preventDefault();
-//     alert("add btn clicked");
-//     console.log('clicked')
-// });
+   });
 
 function test(args) {
     alert('hello '+args+' well done');

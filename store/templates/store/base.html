@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'store/css/cart.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'store/css/dashboard.css' %} ">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{% static 'store/js/store.js' %}"></script>
     <title>Shopop</title>
 </head>
 <body>
@@ -154,15 +153,15 @@
                      <section class="cart-item-sec-2">
                         <p>${myObj[1][i].product_name}</p>
                         <div class="quantity_n_actions">
-                            <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="+">+</button>
+                            <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="+" data-url="{% url 'cart-action' %}">+</button>
                           ${myObj[1][i].quantity}
-                          <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="-">-</button>
+                          <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="-" data-url="{% url 'cart-action' %}">-</button>
                             </div>
                         
                      </section>
                       <section class="cart-item-sec-3">
                         <p>${myObj[1][i].price} $</p>
-                        <button class='cart-action' data-product="${myObj[1][i].product_id}" data-action="remove">Remove</button>
+                        <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="remove" data-url="{% url 'cart-action' %}">Remove</button>
 
                       </section>
                       
@@ -192,35 +191,7 @@
                },2000);
            });
 
-           // cart action 
-           $(document).on("click",".cart-action",function(e){
-            // var user_id = '{{ request.user.id }}';
-            var id = $(this).val();
-               e.preventDefault();
-               $.ajax({
-                   method:"POST",
-                   url: "{% url 'cart-action' %}",
-                   data:{
-                        user_id : '{{ request.user.id }}',
-                        product_id : $(this).data("product"),
-                        action : $(this).data("action"),
-                        csrfmiddlewaretoken: '{{csrf_token}}',
-
-                        
-                   },
-                   
-                  
-
-                success: function(response){
-                    console.log(response);
-                },
-                error: function(){
-                  console.log("error");
-                    console.log("error while performing action");
-                },
-               });
-
-           });
+          
            // show and hide cart
         $("#cart-btn").click(function () {
                 $("#cart").toggle("slow");
@@ -235,7 +206,7 @@
     </script>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src = {% static "store/js/store.js" %}></script>
-  
+    <script src="{% static 'store/js/store.js' %}"></script>
+
 </body>
 </html>
