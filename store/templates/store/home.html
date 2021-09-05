@@ -1,6 +1,4 @@
-
 {% extends 'store/base.html' %}
-{% load static %} 
 
 {% block content %}
 <div class="gen-div">
@@ -19,7 +17,7 @@
             <div class="card-item-details">
                 <p class="p-name">{{p.product_name}}</p>
                 <p>{{p.unit_price}}$</p>
-<button id="add-btn" value="{{p.id}}" class="add-btn" type="submit" name="button" >Add to Cart</button>            </div>
+<button id="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>            </div>
             
         </div>
         {% endfor %}
@@ -36,18 +34,18 @@
         // $(document).on("click","#add-btn",function(e){
         //     test('rubel');
         // });
-        $(document).on("click","#add-btn",function(e){
-            e.preventDefault();
-        var args = {
-            url: "{% url 'add-to-cart' %}",
-            data: {
-                user_id : '{{ request.user.id }}',
-                product_id : $(this).val(),
-                csrfmiddlewaretoken: '{{ csrf_token}}',
-            },
-        };
-        addToCart(args);
-    });
+    //     $(document).on("click","#add-btn",function(e){
+    //         e.preventDefault();
+    //     var args = {
+    //         url: "{% url 'add-to-cart' %}",
+    //         data: {
+    //             user_id : '{{ request.user.id }}',
+    //             product_id : $(this).val(),
+    //             csrfmiddlewaretoken: '{{ csrf_token}}',
+    //         },
+    //     };
+    //     addToCart(args);
+    // });
 
         // //fuction for add item to the cart
         // $(document).on("click","#add-btn",function(e){
