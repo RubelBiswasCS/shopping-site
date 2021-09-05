@@ -117,17 +117,17 @@ def cart_action(request):
         else:
             pass
         # product.delete()
-    response=action
+    response=user_id
     return HttpResponse(response)
 
 def cart(request):
     user_id = request.POST['user_id']
 
-    user = User.objects.get(pk=1)
+    # user = User.objects.get(pk=1)
     
     # cart_items = Cart.objects.filter(user=user)
     if request.method == 'POST' :
-        cart_items = Cart.objects.filter(user=user)
+        cart_items = Cart.objects.filter(user=request.user)
     items={}
     i=0
     total_price = 0
