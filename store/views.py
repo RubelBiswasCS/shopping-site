@@ -70,7 +70,7 @@ def add_to_cart(request):
         try:
             quantity=Cart.objects.get(user__pk=user_id,product=product).quantity
         except:
-            quantity=0    
+            quantity=0 
         # cart_item = Cart(product=product,user=user,quantity=quantity)
         # cart_item.save()
         obj, created = Cart.objects.update_or_create(
@@ -122,7 +122,7 @@ def cart_action(request):
     return HttpResponse(response)
 
 def cart(request):
-    user_id = request.POST['user_id']
+    user_id = request.user.id
 
     # user = User.objects.get(pk=1)
     
@@ -168,6 +168,9 @@ def cart(request):
     response = json.dumps(data)
     return HttpResponse(response)
 
+def cart_item(request):
+    template_name = 'store/cart.html'
+    return render(request ,template_name)
 
 def shipping_address(request):
     # order_id = request.session.get('order_id')

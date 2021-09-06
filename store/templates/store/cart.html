@@ -1,0 +1,22 @@
+
+
+<div class="cart-item" id="cart-item">
+    <section class="item-img">
+      <!-- <img src="${myObj[1][i].image}"  alt= "image" /> -->
+    </section>
+   <section class="cart-item-sec-2">
+      <p>${items[i].product_name}</p>
+      <div class="quantity_n_actions">
+          <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="+" data-url="{% url 'cart-action' %}">+</button>
+        ${myObj[1][i].quantity}
+        <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="-" data-url="{% url 'cart-action' %}">-</button>
+          </div>
+      
+   </section>
+    <section class="cart-item-sec-3">
+      <p>${myObj[1][i].price} $</p>
+      <button class="cart-action" data-product="${myObj[1][i].product_id}" data-action="remove" data-url="{% url 'cart-action' %}">Remove</button>
+
+    </section>
+    
+</div>
