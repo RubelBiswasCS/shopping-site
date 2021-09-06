@@ -100,7 +100,21 @@ $(".add-btn").on("click",function(e){
 
    });
 
+
+     // show and hide cart
+     $("#cart-btn").click(function () {
+        $("#cart").toggle("slow");
+        // $( ".products" ).addClass( "wd-75" );
+    });
+
+    $("#close-cart").click(function () {
+        $("#cart").toggle("slow");
+        // $( ".products" ).addClass( "wd-75" );
+    }); 
+
 function test(args) {
     alert('hello '+args+' well done');
     
 }
+
+
