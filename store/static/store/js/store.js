@@ -13,7 +13,8 @@
 $(".add-btn").on("click",function(e){
        
     // alert("add btn clicked");
-   
+    var quantity = $("#p-qty").val();
+    console.log('quantity: ',quantity)
     e.preventDefault();
     var args = {
         url: $(this).data("url"),
@@ -23,6 +24,7 @@ $(".add-btn").on("click",function(e){
             
             csrfmiddlewaretoken : csrf_token,
             product_id : $(this).data("id"),
+            quantity: quantity,
         },
     };
     addToCart(args);
@@ -55,7 +57,7 @@ $(".add-btn").on("click",function(e){
     // $(document).on("click","#add-btn2",addToCart2);
 //add to cart2
     var addToCart = function(args) {
-
+        console.log('quantity=',args.data.quantity);
         $.ajax({
             method:"POST",
             url:args.url,
@@ -64,11 +66,15 @@ $(".add-btn").on("click",function(e){
             success: function(response){
             console.log('success function fired')
              var myObj = JSON.parse(response);
-             console.log(myObj.user_id+' '+myObj.product_id);
+             console.log(myObj.user_id+' '+myObj.product_id+' test_qty of product '+myObj.product_qty);
              console.log('data successfully send');
          },
 
-         error: function(){
+         error: function(response){
+            var myObj = JSON.parse(response);
+            console.log(myObj.user_id+' '+myObj.product_qty);
+             console.log(response);
+
              console.log("something went wrong");
            
          },

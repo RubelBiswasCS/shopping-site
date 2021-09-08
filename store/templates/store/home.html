@@ -17,6 +17,8 @@
             <div class="card-item-details">
                 <p class="p-name">{{p.product_name}}</p>
                 <p>{{p.unit_price}}$</p>
+                <label>Quantity</label>
+                <input id="p-qty" class="p-qty" type="number" value="1" >
                 <button id="add-btn" class="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>
             </div>
             

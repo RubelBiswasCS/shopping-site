@@ -64,11 +64,16 @@ def delete_product(request):
 def add_to_cart(request):
     user_id = request.user.id
     product_id = request.POST['product_id']
-    
-    try:
+    quantity=1
+    # test_quantity = request.POST['quantity']
+    # quantity=int(test_quantity)
+    if request.POST['quantity']:
         quantity = request.POST['quantity']
-    except:
-        quantity = 1    
+        quantity = int(quantity)
+    # if int(request.POST['quantity']) > 0:
+    #     quantity = request.POST['quantity']
+    #     quantity = int(quantity)
+       
     if request.method=='POST':
         product=Product.objects.get(pk=product_id)
         user = User.objects.get(pk=user_id)
@@ -85,7 +90,9 @@ def add_to_cart(request):
     data={
         'user_id':user_id,
         'product_id':product_id,
+        'product_qty': quantity,
     }
+    # data ={}
     response = json.dumps(data)
     return HttpResponse(response)
 

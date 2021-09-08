@@ -31,6 +31,7 @@
             <div class="cart-option">
                 <div class="cart-qty-details">
                     <form method="POST">
+                        
                         <label>Quantity</label>
                         <input id="p-qty" class="p-qty" type="number" value="1">
                         <button id="add-btn" class="add-btn" type="submit" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}" name="button" > Add to Cart</button>

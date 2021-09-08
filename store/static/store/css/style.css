@@ -154,6 +154,10 @@ h3{
     min-height: 33%;
     
 }
+.card-item-details input, .card-item-details label{
+    display: none;
+    width:50px;
+}
 .product-card p.p-name{
     font-size: .6em;
     
