@@ -17,8 +17,10 @@ $(".add-btn").on("click",function(e){
     e.preventDefault();
     var args = {
         url: $(this).data("url"),
+       
         data: {
             // csrfmiddlewaretoken : $(this).data("csrftoken"),
+            
             csrfmiddlewaretoken : csrf_token,
             product_id : $(this).data("id"),
         },

@@ -64,18 +64,23 @@ def delete_product(request):
 def add_to_cart(request):
     user_id = request.user.id
     product_id = request.POST['product_id']
+    
+    try:
+        quantity = request.POST['quantity']
+    except:
+        quantity = 1    
     if request.method=='POST':
         product=Product.objects.get(pk=product_id)
         user = User.objects.get(pk=user_id)
         try:
-            quantity=Cart.objects.get(user__pk=user_id,product=product).quantity
+            existing_quantity=Cart.objects.get(user__pk=user_id,product=product).quantity
         except:
-            quantity=0 
+            existing_quantity=0 
         # cart_item = Cart(product=product,user=user,quantity=quantity)
         # cart_item.save()
         obj, created = Cart.objects.update_or_create(
     product=product, user=user,
-    defaults={'quantity': quantity+1},
+    defaults={'quantity': existing_quantity+quantity},
 )
     data={
         'user_id':user_id,

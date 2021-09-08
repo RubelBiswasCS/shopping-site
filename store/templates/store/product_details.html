@@ -1,6 +1,11 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+    <style>
+        .cart-qty-details input{
+            width: 80px;
+        }
+    </style>
     <section class="product-details ">
         
  
@@ -25,11 +30,15 @@
             <div><span>1</span>KG</div>
             <div class="cart-option">
                 <div class="cart-qty-details">
-                    <label>Quantity</label>
-                    <span>1</span>
+                    <form method="POST">
+                        <label>Quantity</label>
+                        <input id="p-qty" class="p-qty" type="number" value="1">
+                        <button id="add-btn" class="add-btn" type="submit" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}" name="button" > Add to Cart</button>
+                    </form>
+                    
                 </div>
                 <div>
-                    <button id="add-btn" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" > Add to Cart</button>
+                    
                 </div>
             </div>
 
