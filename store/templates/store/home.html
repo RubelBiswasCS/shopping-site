@@ -17,7 +17,8 @@
             <div class="card-item-details">
                 <p class="p-name">{{p.product_name}}</p>
                 <p>{{p.unit_price}}$</p>
-<button id="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>            </div>
+                <button id="add-btn" class="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>
+            </div>
             
         </div>
         {% endfor %}
