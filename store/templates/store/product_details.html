@@ -8,9 +8,20 @@
     </style>
     <section class="product-details ">
         
- 
-        <div class="p-image">
-            <img src="{{ product.product_img.url }}" />
+        <div class="pd-img-sec">
+            <div class="p-image">
+                <img src="{{ product.product_img.url }}" />
+            </div>
+            <div class="p-image-nav">
+                <ul>
+                    <li>
+                        <img src="{{ product.product_img.url }}"  alt="image"/>
+                    </li>
+                    <li>
+                        <img src="{{ product.product_img.url }}"  alt="image"/>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="p-details">
             <!-- <h1>{{ product.product_name }}</h1>
