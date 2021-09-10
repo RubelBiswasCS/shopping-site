@@ -19,6 +19,10 @@
                     {% endif %} -->
                 </div>
             {% endfor %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form }}
+            {% endfor %}
         </fieldset>
         <button class="btn-ls" type="submit">Submit</button>
     </form>

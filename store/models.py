@@ -10,10 +10,12 @@ class Product(models.Model):
     category = models.CharField(max_length=100)
     unit_price = models.FloatField()
     current_stock = models.IntegerField()
-    product_img = models.ImageField(upload_to='images/',blank=True, default="no-product-image.png")
 
     def __str__(self):
         return self.product_name
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(upload_to='images/',blank=True, default="no-product-image.png")
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)

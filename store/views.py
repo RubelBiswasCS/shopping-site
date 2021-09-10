@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Product,Cart,ShippingAddress,OrderItem,Order
-from .forms import ShippingAddressForm,AddProductForm,UpdateProductForm
+from .models import Product,Cart,ShippingAddress,OrderItem,Order,ProductImages
+from .forms import ShippingAddressForm,AddProductForm,UpdateProductForm,AddProductImagesForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponse
 import json
 import datetime
 
 from django.views.generic.list import ListView
+
+from django.forms import modelformset_factory
 
 
 def home(request):
@@ -21,15 +23,24 @@ def home(request):
 #add product view
 def add_product(request):
     template_name = 'store/add_product.html'
-    
+    ImagesFormset = modelformset_factory(ProductImages,fields=['image',], extra=2)
     if request.method == 'POST':
-        p_form = AddProductForm(request.POST,request.FILES)
-        if p_form.is_valid():
+        p_form = AddProductForm(request.POST)
+        formset = ImagesFormset(request.POST,request.FILES)
+        if p_form.is_valid() and formset.is_valid():
             p_form.save()
+            product_code = p_form.cleaned_data['product_code']
+            product = Product.objects.get(product_code=product_code)
+            for form in formset:
+                photo = form.cleaned_data['image']
+                p_image = ProductImages(product=product,image=photo)
+                p_image.save()
     else:
         p_form = AddProductForm()
+        formset = ImagesFormset()
     context={
         'p_form':p_form,
+        'formset':formset,
     }
     return render(request, template_name,context)
 
