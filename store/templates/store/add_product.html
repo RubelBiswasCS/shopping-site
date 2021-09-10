@@ -21,7 +21,10 @@
             {% endfor %}
             {{ formset.management_form }}
             {% for form in formset %}
-                {{ form }}
+                {{ form.errors }}
+                {% for field in form %}
+                    {{ field }} 
+                {% endfor %}
             {% endfor %}
         </fieldset>
         <button class="btn-ls" type="submit">Submit</button>

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Product,Cart,ShippingAddress,OrderItem,Order,ProductImages
 from .forms import ShippingAddressForm,AddProductForm,UpdateProductForm,AddProductImagesForm
 from django.contrib.auth.models import User
-from django.http import JsonResponse,HttpResponse
+from django.http import JsonResponse,HttpResponse,HttpResponseRedirect
 import json
 import datetime
 
@@ -23,21 +23,25 @@ def home(request):
 #add product view
 def add_product(request):
     template_name = 'store/add_product.html'
-    ImagesFormset = modelformset_factory(ProductImages,fields=['image',], extra=2)
+    ImagesFormset = modelformset_factory(ProductImages,fields=['image',], extra=3)
     if request.method == 'POST':
         p_form = AddProductForm(request.POST)
-        formset = ImagesFormset(request.POST,request.FILES)
+        formset = ImagesFormset(request.POST,request.FILES, queryset=ProductImages.objects.none())
         if p_form.is_valid() and formset.is_valid():
             p_form.save()
             product_code = p_form.cleaned_data['product_code']
             product = Product.objects.get(product_code=product_code)
             for form in formset:
-                photo = form.cleaned_data['image']
-                p_image = ProductImages(product=product,image=photo)
-                p_image.save()
+                try:
+                    photo = form.cleaned_data['image']
+                    p_image = ProductImages(product=product,image=photo)
+                    p_image.save()
+                except:
+                    pass        
+            return HttpResponseRedirect('add-product')
     else:
         p_form = AddProductForm()
-        formset = ImagesFormset()
+        formset = ImagesFormset(queryset=ProductImages.objects.none())
     context={
         'p_form':p_form,
         'formset':formset,
