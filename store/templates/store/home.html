@@ -6,18 +6,21 @@
         
         {% for p in products %}
         <div class="product-card">
-            <figure class="card-image">
-                {% load static %}
-                <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
-                -->
-                {% if p.productimages_set %}
-                <!-- <img src="{{ p.product_img.url }}"   /> -->
-                <!-- {% for image in p.productimages_set.all %}
-                    <img src="{{ image.image.url }}">
-                {% endfor %} -->
-                <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
-                {% endif %}
-            </figure>
+            
+                <figure data-target="{% url 'product-details' p.pk %}" class="card-image">
+                    {% load static %}
+                    <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
+                    -->
+                    {% if p.productimages_set %}
+                    <!-- <img src="{{ p.product_img.url }}"   /> -->
+                    <!-- {% for image in p.productimages_set.all %}
+                        <img src="{{ image.image.url }}">
+                    {% endfor %} -->
+                    <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
+                    {% endif %}
+                </figure>
+        
+            
             <div class="card-item-details">
                 <p class="p-name">{{p.product_name}}</p>
                 <p>{{p.unit_price}}$</p>

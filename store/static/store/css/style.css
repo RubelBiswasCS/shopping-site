@@ -113,6 +113,16 @@ h3{
     background-color: white;
     box-shadow: 0 0 0 2px gainsboro;
 }
+.product-card a{
+    margin:0;
+    padding:0;
+    outline: none;
+    color: black;
+    text-decoration: none;
+    height: inherit;
+    width: inherit;
+    background-color: transparent;
+}
 .product-card figure{
     display: flex;
     align-items: center;

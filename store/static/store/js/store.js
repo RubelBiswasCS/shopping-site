@@ -237,7 +237,13 @@ $(document).on("click",".cart-action",function(e){
         // alert("product-image-nav clicked");
     });
 
-
+    $('.card-image').on('click', function(e) {
+        e.preventDefault(); 
+        var url = $(this).data('target');
+        // location.replace(url);
+        window.location.href = url;
+        
+    });
 function test(args) {
     alert('hello '+args+' well done');
     
