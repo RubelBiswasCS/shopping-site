@@ -160,15 +160,17 @@ def cart(request):
     i=0
     total_price = 0
     for item in cart_items:
-        if item.product.product_img:
+        if item.product.productimages_set:
             price = item.quantity * item.product.unit_price
             total_price += price
+            # product_image = ProductImages.objects.get(product__id=item.product.pk)
             items[i]={
                 'product_id': item.product.pk,
                 'product_name' :item.product.product_name,
                 'unit_price' :item.product.unit_price,
                 'quantity': item.quantity,
-                'image':item.product.product_img.url,
+                # 'image':product_image.image.url,
+                'image': item.product.productimages_set.first().image.url,
                 'price': price,
             }
         else:

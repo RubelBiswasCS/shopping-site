@@ -10,8 +10,12 @@
                 {% load static %}
                 <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
                 -->
-                {% if p.product_img %}
-                <img src="{{ p.product_img.url }}"   />
+                {% if p.productimages_set %}
+                <!-- <img src="{{ p.product_img.url }}"   /> -->
+                <!-- {% for image in p.productimages_set.all %}
+                    <img src="{{ image.image.url }}">
+                {% endfor %} -->
+                <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
                 {% endif %}
             </figure>
             <div class="card-item-details">
