@@ -67,7 +67,7 @@ def update_product(request):
 # product details view
 def product_details(request):
     template_name = 'store/product_details.html'
-    product = Product.objects.get(pk=14)
+    product = Product.objects.get(pk=33)
     context={
         'product':product,
     }

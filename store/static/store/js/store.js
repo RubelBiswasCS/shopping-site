@@ -223,6 +223,21 @@ $(document).on("click",".cart-action",function(e){
     }); 
 
 
+//function for image nav in product details
+
+    $(".product-image-nav").on("click",function (e) {
+        e.preventDefault();
+
+        var imageUrl= $(this).data("p-image-url");
+        var temp =  `<img src="${imageUrl}" />`
+
+        $("#p-image").empty();
+        $("#p-image").append(temp);
+        console.log('image url is : ',imageUrl);
+        // alert("product-image-nav clicked");
+    });
+
+
 function test(args) {
     alert('hello '+args+' well done');
     

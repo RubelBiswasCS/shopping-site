@@ -348,13 +348,15 @@ h3{
  .p-image-nav li{
     width:20%;
     min-width: 20%;
+    padding: 5px;
     border: 1px solid red;
     min-height: inherit;
 
  }
  .p-image-nav img{
      height: 100%;
-     width: auto;
+     width:auto;
+     max-width: 100%;
  }
  .p-details{
     display: flex;

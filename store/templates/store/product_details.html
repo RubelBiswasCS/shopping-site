@@ -11,17 +11,25 @@
     <section class="product-details ">
         
         <div class="pd-img-sec">
-            <div class="p-image">
-                <img src="{{ product.product_img.url }}" />
+            <div class="p-image" id="p-image">
+                <img src="{{ product.productimages_set.first.image.url }}" />
             </div>
             <div class="p-image-nav">
                 <ul>
-                    <li>
-                        <img src="{{ product.product_img.url }}"  alt="image"/>
+                     {% for image in product.productimages_set.all %}
+                     <li>
+                         <!-- <button class="product-image-nav" data-p-image-url="{{ image.image.url }}">
+                            <img  src="{{ image.image.url }}"   alt="image"/>
+                         </button> -->
+                         <img  src="{{ image.image.url }}" class="product-image-nav" data-p-image-url="{{ image.image.url }}"  alt="image"/>
+
                     </li>
-                    <li>
+                    <!-- <img src="{{ image.image.url }}"> -->
+                    {% endfor %}
+                    <!-- <li>
                         <img src="{{ product.product_img.url }}"  alt="image"/>
-                    </li>
+                    </li> -->
+                    
                 </ul>
             </div>
         </div>
