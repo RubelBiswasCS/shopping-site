@@ -244,6 +244,25 @@ $(document).on("click",".cart-action",function(e){
         window.location.href = url;
         
     });
+
+   
+    $("#cash-on-delivery").on("click", function() {
+        var url = $(this).data("url");
+        $('#payment-method').load(url,
+                function () {
+                // alert("Load was performed.");
+                });
+            });
+  
+    $("#online-payment").on("click", function() {
+        var url = $(this).data("url");
+        $('#payment-method').load(url,
+                function () {
+                // alert("Load was performed.");
+                });
+            });
+    
+
 function test(args) {
     alert('hello '+args+' well done');
     

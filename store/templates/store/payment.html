@@ -11,8 +11,8 @@
       </div>
       <div class="payment-options">
         <h3>Select Payment Option</h3>
-        <button id="online-payment" data-url="{% url 'payment-method'%}" class="payment-option">Pay Online</button>
-        <button id="cash-on-delivery" class="payment-option">Cash on Dalivery</button>
+        <button id="online-payment" data-url="{% url 'payment-method' %} #method-po" class="payment-option">Pay Online</button>
+        <button id="cash-on-delivery" data-url="{% url 'payment-method' %} #method-cod" class="payment-option">Cash on Dalivery</button>
       </div>
     </section>
     <section id="payment-method" class="payment-options">
@@ -27,23 +27,14 @@
       //       });
       //   });
        
-$(document).ready(function() {
-  $("#cash-on-delivery").on("click", function() {
-    $('#payment-method').load("{% url 'payment-method' %} #method-cod",
-            function () {
-              // alert("Load was performed.");
-            });
-          });
-});
-
-$(document).ready(function() {
-  $("#online-payment").on("click", function() {
-    $('#payment-method').load("{% url 'payment-method' %} #method-po",
-            function () {
-              alert("Load was performed.");
-            });
-          });
-});
+//       $(document).ready(function() {
+//   $("#cash-on-delivery").on("click", function() {
+//     $('#payment-method').load("{% url 'payment-method' %} #method-cod",
+//             function () {
+//               // alert("Load was performed.");
+//             });
+//           });
+// });
 
 
     </script>
