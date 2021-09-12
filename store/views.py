@@ -205,7 +205,7 @@ def shipping_address(request):
     # order_id = request.session.get('order_id')
     # order = Order.objects.get(pk=order_id)
     request.session['temp_order_id'] = datetime.datetime.now().timestamp()
-    initial = get_object_or_404(ShippingAddress, user = request.user)
+    
     if request.method == 'POST':
         form = ShippingAddressForm(request.POST)
         if form.is_valid():
@@ -228,7 +228,11 @@ def shipping_address(request):
             return redirect('payment')
 
     else:
-        form = ShippingAddressForm(instance=initial)
+        try:
+            initial = get_object_or_404(ShippingAddress, user = request.user)
+            form = ShippingAddressForm(instance=initial)
+        except:
+            form = ShippingAddressForm()
     
     template_name="store/shipping.html"
     context={

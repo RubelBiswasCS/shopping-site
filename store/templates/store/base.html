@@ -92,8 +92,8 @@
             <P>Total: $<small id="total">100</small></P>
         </section>
          
-          <form action="{% url 'shipping-address' %}" class="checkout-form" method="POST">
-              {% csrf_token %}
+          <form action="{% url 'shipping-address' %}" class="checkout-form" >
+              <!-- {% csrf_token %} -->
               <button class="checkout-btn" id="checkout">Checkout</button>
           </form>
           <!-- <a href="{% url 'shipping-address' %}" class="checkout-btn" id="checkout">Checkout</a> -->
