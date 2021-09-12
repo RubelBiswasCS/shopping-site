@@ -1,13 +1,3 @@
-// $(document).ready(function() {
-//     $("#online-payment").on("click", function() {
-//         var $url = 'this.dataset.url';
-//       $('#payment-method').load(" url #method-cod",
-//               function () {
-//                 alert("Load was performed.");
-//               });
-//             });
-//   });
-
 
 //fuction for add item to the cart
 $(".add-btn").on("click",function(e){
@@ -248,14 +238,23 @@ $(document).on("click",".cart-action",function(e){
    
     $("#cash-on-delivery").on("click", function() {
         var url = $(this).data("url");
+        
+        $('.payment-option').removeClass('nav-active');
+        $(this).addClass('nav-active');
+
         $('#payment-method').load(url,
                 function () {
+
                 // alert("Load was performed.");
                 });
             });
   
     $("#online-payment").on("click", function() {
         var url = $(this).data("url");
+
+        $('.payment-option').removeClass('nav-active');
+        $(this).addClass('nav-active');
+
         $('#payment-method').load(url,
                 function () {
                 // alert("Load was performed.");

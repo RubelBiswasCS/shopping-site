@@ -78,54 +78,48 @@
     <script>
 
 
-// nav-overview on load function
-$(document).ready(function() {
+// // nav-overview on load function
+// $(document).ready(function() {
   
-    $('#db-content').load("{% url 'dashboard-overview' %} ",
-            function () {
-            //   alert("Load was performed.");
-            });
+//     $('#db-content').load("{% url 'dashboard-overview' %} ",
+//             function () {
+//             //   alert("Load was performed.");
+//             });
         
-});
+// });
 
-// nav-overview function
-$(document).ready(function() {
-  $("#nav-overview").on("click", function() {
-    $('#db-content').load("{% url 'dashboard-overview' %} ",
-            function () {
-            //   alert("Load was performed.");
-            });
-          });
-});
+// // nav-overview function
+// $(document).ready(function() {
+//   $("#nav-overview").on("click", function() {
+//     $('#db-content').load("{% url 'dashboard-overview' %} ",
+//             function () {
+//             //   alert("Load was performed.");
+//             });
+//           });
+// });
 
-        // nav-products function
-        $(document).ready(function() {
-  $("#nav-products").on("click", function() {
-    $('#db-content').load("{% url 'product-list' %} ",
-            function () {
-            //   alert("Load was performed.");
-            });
-          });
-});
+//         // nav-products function
+//         $(document).ready(function() {
+//   $("#nav-products").on("click", function() {
+//     $('#db-content').load("{% url 'product-list' %} ",
+//             function () {
+//             //   alert("Load was performed.");
+//             });
+//           });
+// });
 
-  // nav-orders function
-  $(document).ready(function() {
-  $("#nav-orders").on("click", function() {
-    $('#db-content').load("{% url 'order-list' %} ",
-            function () {
-            //   alert("Load was performed.");
-            });
-          });
-});
+//   // nav-orders function
+//   $(document).ready(function() {
+//   $("#nav-orders").on("click", function() {
+//     $('#db-content').load("{% url 'order-list' %} ",
+//             function () {
+//             //   alert("Load was performed.");
+//             });
+//           });
+// });
 
 
-//funciton for heighlight active nav
-$(document).ready(function() {
-    $('.dash-nav').click(function() {
-      $('.dash-nav').removeClass('nav-active');
-        $(this).addClass('nav-active');
-    });
-});
+
 
     </script>
 
