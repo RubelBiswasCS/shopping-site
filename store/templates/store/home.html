@@ -16,6 +16,7 @@
                     <!-- {% for image in p.productimages_set.all %}
                         <img src="{{ image.image.url }}">
                     {% endfor %} -->
+                    <p>Click for Details</p>
                     <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
                     {% endif %}
                 </figure>

@@ -146,8 +146,21 @@ h3{
    height: 95%;
    
 }
+.card-image p{
+    display: none;
+    position: absolute;
+    color: black;
+    background-color: rgb(159, 168, 118);
+    font-size: .7em;
+}
+
 .card-image:hover{
-    filter: opacity(30%)  brightness(150%);
+    filter: opacity(50%)  brightness(150%);
+    cursor: pointer;
+}
+.card-image:hover p{
+    display: block;
+
 }
 .card-item-details{
     height: 40%;

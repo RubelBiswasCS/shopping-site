@@ -44,7 +44,11 @@
             {% endif %} -->
             <h1>{{product.product_name}}</h1>
             <label>Brand: <span>N/A</span></label>
-            <small>In Stock</small>
+            {% if product.current_stock > 0 %}
+            <small>Availability : <span style="color:green;"> In Stock</span></small>
+            {% else %}
+            <small >Availability :<span style="color:red;"> Out of Stock</span></small>
+            {% endif %}
             <div class="product-price">
                 <label>Price: <span>{{product.unit_price}}</sapn></label>
             </div>
