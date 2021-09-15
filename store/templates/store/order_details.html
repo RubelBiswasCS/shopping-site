@@ -7,11 +7,41 @@
       <div class="orderitems">
        <p>{{shipping_address.city}}</p>
       </div>
-        <div class="orderitems">
+      <div class="">
+        <h5>Orders</h5>
+        <ul>
+            <li class="dash-product first-row">
+                <div>Photos</div>
+                <div class="dash-product-name">Name</div>
+                <div>Date</div>
+                <div>Category</div>
+                <div>Product Code</div>
+                <div>Price</div>
+                <div>Status</div>
+            
+            </li>
+        {% for item in order_items %}
+            <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
+            <li class="dash-product">
+                <div>Photo</div>
+                <div class="dash-product-name">{{item.product.product_name}}</div>
+                <div >10-10-2020</div>
+                <div>{{item.category}}</div>
+                <div>{{item.product.product_code}}</div>
+                <div>149.99$</div>
+                <div>In Stock</div>
+            </li>
+        {% empty %}
+            <li>No product yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+        <!-- <div class="orderitems">
             {% for item in order_items %}
               <p>{{item.product.product_name}}</p>
               <p>{{item.product.product_code}}</p>
             {% endfor %}
-        </div>
+        </div> -->
+
     </section>
 {% endblock content %}
