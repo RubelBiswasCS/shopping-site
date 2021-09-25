@@ -397,6 +397,13 @@ h3{
     font-weight: 600;
     color: #000;
 }
+.product-details-info{
+    padding:10px;
+    font-size: .85rem;
+}
+.product-details-info p{
+    text-align: justify;
+}
 @media only screen and (min-width:1201px){
     /* #about{
         background: rgb(23, 196, 124);
