@@ -234,7 +234,6 @@ $(document).on("click",".cart-action",function(e){
         window.location.href = url;
         
     });
-
    
     $("#cash-on-delivery").on("click", function() {
         var url = $(this).data("url");

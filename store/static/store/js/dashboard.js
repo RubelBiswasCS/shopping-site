@@ -23,6 +23,8 @@ $(document).ready(function() {
                 });
             });
 
+
+
 });
 
 // function for loading dashboard overview
@@ -50,3 +52,4 @@ $('.dash-nav').click(function() {
     $('.dash-nav').removeClass('nav-active');
       $(this).addClass('nav-active');
   });
+
