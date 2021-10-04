@@ -86,7 +86,8 @@ h3{
 }
 .gen-div{
     
-   
+   display: flex;
+   flex-direction: column;
 }
 .products{
     display: flex;
@@ -96,6 +97,16 @@ h3{
     /* width: 100%; */
     width: auto;
     padding: 10px;
+}
+.page-nav{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.page-nav li{
+    background-color:pink;
 }
 .product-card{
     display: flex;

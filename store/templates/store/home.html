@@ -38,7 +38,7 @@
         
 
     </section>
-    
+    <section class="page-nav"> </section>
     
 </div>
     <style>
@@ -46,22 +46,22 @@
         color: green;
         }
 
-        .products li {
+        .page-nav li {
         display: inline-block;
         }
     </style>
     <script>
 
             //productsation
-	        var pageSize = 6;
+	        var pageSize = 5;
 
             var pageCount =  $(".product-card").length / pageSize;
 
             for(var i = 0 ; i<pageCount;i++){
                 
-            $(".products").append('<li><a href="#">'+(i+1)+'</a></li> ');
+            $(".page-nav").append('<li><a class="btn btn-block btn-primary" href="#">'+(i+1)+'</a></li> ');
             }
-                $(".products li").first().find("a").addClass("current")
+                $(".page-nav li").first().find("a").addClass("current")
             showPage = function(page) {
                 $(".product-card").hide();
                 $(".product-card").each(function(n) {
@@ -72,10 +72,11 @@
 
             showPage(1);
 
-            $(".products li a").click(function() {
-                $(".products li a").removeClass("current");
+            $(".page-nav li a").click(function() {
+                $(".page-nav li a").removeClass("current");
                 $(this).addClass("current");
                 showPage(parseInt($(this).text())) 
+                console.log($(this).text())
             });
 
         // $(document).on("click","#add-btn",function(e){
