@@ -39,9 +39,45 @@
 
     </section>
     
+    
 </div>
+    <style>
+        .current {
+        color: green;
+        }
 
+        .products li {
+        display: inline-block;
+        }
+    </style>
     <script>
+
+            //productsation
+	        var pageSize = 6;
+
+            var pageCount =  $(".product-card").length / pageSize;
+
+            for(var i = 0 ; i<pageCount;i++){
+                
+            $(".products").append('<li><a href="#">'+(i+1)+'</a></li> ');
+            }
+                $(".products li").first().find("a").addClass("current")
+            showPage = function(page) {
+                $(".product-card").hide();
+                $(".product-card").each(function(n) {
+                    if (n >= pageSize * (page - 1) && n < pageSize * page)
+                        $(this).show();
+                });        
+            }
+
+            showPage(1);
+
+            $(".products li a").click(function() {
+                $(".products li a").removeClass("current");
+                $(this).addClass("current");
+                showPage(parseInt($(this).text())) 
+            });
+
         // $(document).on("click","#add-btn",function(e){
         //     test('rubel');
         // });
