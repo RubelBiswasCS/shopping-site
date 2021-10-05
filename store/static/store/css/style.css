@@ -103,10 +103,18 @@ h3{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+    padding:5px;
+    background-color: lightblue;
 
 }
 .page-nav li{
     background-color:pink;
+    padding: 5px;
+    height: auto;
+}
+.page-nav li a{
+   
 }
 .product-card{
     display: flex;
