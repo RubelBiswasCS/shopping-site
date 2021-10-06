@@ -368,6 +368,12 @@ h3{
      width: 100%;
      
  }
+ .main-product-img{
+     height:auto;
+     max-height:  90%;
+     width: fit-content;
+     max-width: 90%;
+ }
  .p-image-nav{
     margin-top: 2px;;
     min-height: 15vh;

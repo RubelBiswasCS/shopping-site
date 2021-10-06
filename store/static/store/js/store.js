@@ -219,7 +219,7 @@ $(document).on("click",".cart-action",function(e){
         e.preventDefault();
 
         var imageUrl= $(this).data("p-image-url");
-        var temp =  `<img src="${imageUrl}" />`
+        var temp =  `<img class="main-product-img" src="${imageUrl}" />`
 
         $("#p-image").empty();
         $("#p-image").append(temp);
