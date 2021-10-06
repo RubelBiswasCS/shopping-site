@@ -64,6 +64,16 @@ def update_product(request):
    
     return render(request, template_name,context)
 
+def category(request,category):
+    #category = category.lower()
+    products = Product.objects.filter(category=category)
+
+    context={
+        'products':products,
+    }
+    template_name = 'store/home.html'
+    return render(request, template_name,context)
+
 # product details view
 def product_details(request,pk):
     template_name = 'store/product_details.html'
