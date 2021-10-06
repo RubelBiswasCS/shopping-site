@@ -1,6 +1,7 @@
 
 //fuction for add item to the cart
-$(".add-btn").on("click",function(e){
+
+$(document).on("click",".add-btn",function(e){
        
     // alert("add btn clicked");
     var quantity = $("#p-qty").val();
@@ -22,6 +23,7 @@ $(".add-btn").on("click",function(e){
     // console.log($(this).data("csrftoken"));
     // console.log(csrf_token);
 });
+
 
 
 //function for add to cart btn on product details
@@ -227,7 +229,7 @@ $(document).on("click",".cart-action",function(e){
         // alert("product-image-nav clicked");
     });
 
-    $('.card-image').on('click', function(e) {
+    $(document).on('click','.card-image', function(e) {
         e.preventDefault(); 
         var url = $(this).data('target');
         // location.replace(url);

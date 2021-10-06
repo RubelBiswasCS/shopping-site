@@ -16,7 +16,8 @@ class Product(models.Model):
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images/',blank=True, default="no-product-image.png")
-
+    def __str__(self):
+        return self.product.product_name
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

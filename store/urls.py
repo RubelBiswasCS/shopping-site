@@ -26,6 +26,7 @@ urlpatterns = [
     path('<int:pk>/product-details',views.product_details,name='product-details'),
     path('dashboard',views.dashboard,name='dashboard'),
     path('product-list', ProductListView.as_view(), name='product-list'),
+    path('products', views.product_list, name='products'),
     path('order-list', OrderListView.as_view(), name='order-list'),
     path('dashboard-overview', views.dashboard_overview, name='dashboard-overview'),
     path('piechart',views.piechart,name='piechart'),
