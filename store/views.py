@@ -20,19 +20,6 @@ def home(request):
     template_name = 'store/home.html'
     return render(request, template_name,context)
 
-def product_list(request):
-    products = Product.objects.all()
-    products = list(products.values())
-
-    product_images = ProductImages.objects.all()
-    product_images = list(product_images.values())
-    #products = [i for i in products]
-   
-    context={
-        'products':products,
-        'product_images':product_images,
-    }
-    return JsonResponse(context)
 #add product view
 def add_product(request):
     template_name = 'store/add_product.html'
@@ -322,7 +309,6 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         # context['now'] = timezone.now()
         return context
-        
 
 class OrderListView(ListView):
     model = Order
