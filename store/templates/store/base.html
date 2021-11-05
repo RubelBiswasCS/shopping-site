@@ -35,14 +35,17 @@
               <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
               
             </div>
-            <div class="nav-right">
+            <div class="nav-right gap-10">
               {% if user.is_authenticated %}
-                  <p>{{ user.username }}</p>
-                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                  <a class="nav-item nav-link border border-primary" href="#">{{ user.username }}</a>
+                  {% if user.is_superuser %}
+                  <a class="nav-item nav-link btn btn-primary" href="{% url 'dashboard' %}">Dashboard</a>
+                  {% endif %}
+                  <a class="nav-item nav-link border border-warning" href="{% url 'logout' %}">Logout</a>
                   <button id="cart-btn" class="cart-btn" ><small id="total-item">0</small></button>
                   
               {% else %}
-                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link  border border-primary" href="{% url 'login' %}">Login</a>
                   <!-- <button id="cart-btn" class="cart-btn" ><small>10</small></button> -->
                   <!-- <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>     -->
               {% endif %}  
