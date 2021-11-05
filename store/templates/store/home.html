@@ -2,43 +2,74 @@
 
 {% block content %}
 <div class="gen-div">
-    <section class="products">
-        
-        {% for p in products %}
-        <div class="product-card">
-            
-                <figure data-target="{% url 'product-details' p.pk %}" class="card-image">
-                    {% load static %}
-                    <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
-                    -->
-                    {% if p.productimages_set %}
-                    <!-- <img src="{{ p.product_img.url }}"   /> -->
-                    <!-- {% for image in p.productimages_set.all %}
-                        <img src="{{ image.image.url }}">
-                    {% endfor %} -->
-                    <p>Click for Details</p>
-                    <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
-                    {% endif %}
-                </figure>
-        
-            
-            <div class="card-item-details">
-                <p class="p-name">{{p.product_name}}</p>
-                <p>{{p.unit_price}}$</p>
-                <label>Quantity</label>
-                <input id="p-qty" class="p-qty" type="number" value="1" >
-                <button id="add-btn" class="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>
-            </div>
-            
-        </div>
-        {% endfor %}
-        <!-- <div id="cart" style="height:100px; width:100px; background: red;">
+    <div class="left-col">
+        <!-- <div class="filter-items">
+            <fieldset>
+                <legend>Filter Price Range</legend>
+                <div>
+                  <input type="checkbox" id="lt-100" name="lt-100" value="100" >
+                  <label for="lt-100"> Bellow 100</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="h-500" name="h-500" value="500">
+                  <label for="h-500">100 - 499</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="h-1000" name="h-1000" value="1000">
+                    <label for="h-1000">500 - 999</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="gt-1000" name="gt-1000" value="1001" >
+                    <label for="gt-1000"> Above 1000</label>
+                </div>
+              </fieldset>
+              
+          
+            <label for="price"><input id="lt100" type="checkbox" name="personality" value="coding" checked>&lt; 100</label>
+            <label ><input id="loving2" type="checkbox" name="personality"> Loving2</label>
 
         </div> -->
+    </div>
+    <div class="content">
+        <section class="products">
         
-
-    </section>
-    <section class="page-nav"> </section>
+            {% for p in products %}
+            <div class="product-card">
+                
+                    <figure data-target="{% url 'product-details' p.pk %}" class="card-image">
+                        {% load static %}
+                        <!-- <img src="{% static 'store/img/headphone-nbg.png' %}" alt="headphone image"> 
+                        -->
+                        {% if p.productimages_set %}
+                        <!-- <img src="{{ p.product_img.url }}"   /> -->
+                        <!-- {% for image in p.productimages_set.all %}
+                            <img src="{{ image.image.url }}">
+                        {% endfor %} -->
+                        <p>Click for Details</p>
+                        <img src="{{ p.productimages_set.first.image.url }}" alt="{{p.product_name}} image"/>
+                        {% endif %}
+                    </figure>
+            
+                
+                <div class="card-item-details">
+                    <p class="p-name">{{p.product_name}}</p>
+                    <p>{{p.unit_price}}$</p>
+                    <label>Quantity</label>
+                    <input id="p-qty" class="p-qty" type="number" value="1" >
+                    <button id="add-btn" class="add-btn" data-id="{{p.id}}" data-url="{% url 'add-to-cart' %}"  class="add-btn" name="button" >Add to Cart</button>
+                </div>
+                
+            </div>
+            {% endfor %}
+            <!-- <div id="cart" style="height:100px; width:100px; background: red;">
+    
+            </div> -->
+            
+    
+        </section>
+        <section class="page-nav"> </section>
+    </div>
+    
     
 </div>
     <style>

@@ -87,6 +87,23 @@ h3{
 .gen-div{
     
    display: flex;
+   
+}
+.left-col{
+    padding-top: 10px;
+    width: 15vw;
+    min-width: 15vw;
+}
+.filter-items{
+    
+    display: flex;
+    flex-direction: column;
+    min-width: 100px;
+    min-height: 100px;
+    background-color: coral;
+}
+.content{
+    display: flex;
    flex-direction: column;
 }
 .products{
