@@ -22,8 +22,13 @@ def home(request):
     template_name = 'store/home.html'
     return render(request, template_name,context)
 
+
+def user_type_test(user):
+    return user.is_staff
+
 #add product view
 @login_required
+@user_passes_test(user_type_test)
 def add_product(request):
     template_name = 'store/add_product.html'
     ImagesFormset = modelformset_factory(ProductImages,fields=['image',], extra=3)
@@ -86,7 +91,8 @@ def product_details(request,pk):
         'product':product,
     }
     return render(request, template_name,context)
-
+    
+@login_required
 def delete_product(request):
     return HttpResponse("Product")
 
@@ -164,6 +170,7 @@ def cart_action(request):
     response=user_id
     return HttpResponse(response)
 
+@login_required
 def cart(request):
     user_id = request.user.id
 
@@ -300,6 +307,7 @@ def create_order(request):
         request.session['order_id'] = order.pk
         return redirect('order-overview')
 
+@login_required
 def order_overview(request):
     user_id = request.user.id
     # order_id = request.session.get('order_id')
@@ -317,8 +325,6 @@ def order_overview(request):
     template_name = 'store/order_details.html'
     return render(request, template_name,context)
 
-def user_type_test(user):
-    return user.is_staff
 
 @login_required
 @user_passes_test(user_type_test)

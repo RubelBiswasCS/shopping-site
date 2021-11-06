@@ -13,7 +13,7 @@
     <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
     <li class="dash-product">
         <div>{{ forloop.counter }}</div>
-        <div>image</div>
+        <div> <img class="sm-img" src="{{ product.productimages_set.first.image.url }}" alt="Image"></div>
         <div class="dash-product-name">{{ product.product_name }}</div>
         <div>{{ product.product_code }}</div>
         <div>{{ product.unit_price }}</div>

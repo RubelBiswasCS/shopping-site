@@ -19,7 +19,8 @@
 
     
     <header class="main-header">
-        <h3>Welcome</h3>
+        <h3 style="margin-left:auto;">Welcome</h3>
+        <button id="temp-header-hide" style="margin-left:auto;background: none;border:none;padding-right:20px">x</button>
     </header>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -120,6 +121,11 @@
       var product_list_url = "{% url 'product-list' %} ";
       var order_list_url = "{% url 'order-list' %} ";
       var add_product_url = "{% url 'add-product' %} ";
+
+      $("#temp-header-hide").on("click",() => {
+        $(".main-header").remove();
+        // $(".main-header").css("display","none");
+      });
 
     </script>
 

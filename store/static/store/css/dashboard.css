@@ -263,8 +263,8 @@ li{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
-    justify-content:flex-start;
+    align-items:center;
+    justify-content:center;
     min-width: 24%;
     width: 24%;
     height: 100%;
@@ -330,6 +330,12 @@ li{
     background-color: rgb(255,255,204);
 }
 div.dash-product-name{
-    min-width: 25%;
-    width:25%;
+    min-width: 40%;
+    width:40%;
+    font-size: .7em;
 }
+.dashboard .sm-img{
+    max-height: 25px;
+    object-fit: scale-down;
+}
+

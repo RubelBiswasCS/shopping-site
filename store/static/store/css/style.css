@@ -7,6 +7,11 @@
 /* .bg-light{
     background-color: transparent !important;
 } */
+.main-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .navbar{
     padding-top: 0;
     padding-bottom: 0;
