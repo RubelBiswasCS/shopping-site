@@ -1,0 +1,99 @@
+.order-details-clint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #e4e1d0;
+  width: 80vw;
+  height: auto;
+  gap: 20px;
+}
+.order-details-clint legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: blueviolet;
+  background-color: lightblue;
+  font-size: 0.7em;
+}
+.order-details-clint .clint-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: inherit;
+}
+.order-details-clint .clint-info div.clt-inf-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: inherit;
+  gap: 15px;
+  padding: 10px;
+}
+.order-details-clint .clint-info div.clt-inf-details div.clint-info-detail {
+  font-size: 0.8em;
+  min-width: 30%;
+  padding: 5px;
+  padding-left: 15px;
+  background-color: burlywood;
+}
+.order-details-clint .order-items-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: inherit;
+  gap: 5px;
+}
+.order-details-clint .order-items-info div.ordered-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: inherit;
+  height: inherit;
+  border: 1px solid blueviolet;
+  font-size: 0.7em;
+  gap: 2px;
+}
+.order-details-clint .order-items-info div.ordered-item div.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1px;
+  max-height: inherit;
+}
+.order-details-clint .order-items-info div.ordered-item div.col-0 {
+  max-width: 5%;
+}
+.order-details-clint .order-items-info div.ordered-item div.col-1 {
+  max-height: inherit;
+  width: 10%;
+}
+.order-details-clint .order-items-info div.ordered-item div.col-2 {
+  width: 60%;
+}
+.order-details-clint .order-items-info div.ordered-item div.col-3 {
+  width: 20%;
+}
+.order-details-clint .order-items-info div.ordered-item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  font-size: 1em;
+  height: 50%;
+}
+.order-details-clint .order-items-info div.ordered-item img.sm-img {
+  max-height: 45px;
+  object-fit: scale-down;
+}
+
+/*# sourceMappingURL=order-overview.css.map */

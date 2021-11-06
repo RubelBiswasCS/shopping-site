@@ -1,7 +1,61 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-    <section>
+    <div class="order-details-clint">
+        <section class="clint-info">
+            <legend>Shipping Details</legend>
+            <div class="clt-inf-details">
+                <div class="clint-info-detail">Name : <span>{{order.user}}</span></div>
+                <div class="clint-info-detail">Phone:<span>{{shipping_address.phone}}</span></div>
+                <div class="clint-info-detail">Address : <span>{{shipping_address.address}}</span></div>
+                <div class="clint-info-detail">Post Code : <span>{{shipping_address.postcode}}</span></div>
+                <div class="clint-info-detail">City : <span>{{shipping_address.city}}</span></div>
+                <div class="clint-info-detail">Country : <span>{{shipping_address.country}}</span></div>
+            </div>
+           
+
+        </section>
+        <section class="order-items-info">
+            <legend>Ordered Items</legend>
+            
+            {% for item in order_items %}
+            <div class="ordered-item">
+                <div class="col col-0">1</div>
+                <div class="col col-1">
+                    <img class="sm-img" src="{{ item.product.productimages_set.first.image.url }}" alt="Image">
+                </div>
+                <div class="col col-2">
+                    <span>{{item.product.product_name}}</span>
+                    <span>{{item.product.category}}</span>
+                </div>
+                <div class="col col-3">
+                    <span>{{item.quantity}}</span>
+                    <span>{{item.product.unit_price}}</span>
+                </div>
+
+            </div>
+            {% empty %}
+            <div>No product yet.</div>
+            {% endfor %}
+           
+                <!-- {% for item in order_items %}
+                <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> 
+                <li class="dash-product">
+                    <div>Photo</div>
+                    <div class="dash-product-name">{{item.product.product_name}}</div>
+                    <div >10-10-2020</div>
+                    <div>{{item.category}}</div>
+                    <div>{{item.product.product_code}}</div>
+                    <div>149.99$</div>
+                    <div>In Stock</div>
+                </li>
+            {% empty %}
+                <li>No product yet.</li>
+            {% endfor %} -->
+            
+        </section>
+    </div>
+    <!-- <section>
          {{order.transaction_id}}
       
       <div class="orderitems">
@@ -21,7 +75,7 @@
             
             </li>
         {% for item in order_items %}
-            <!-- <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> -->
+            <li>{{ product.product_name }} - {{ product.unit_price }} - {{ product.current_stock }}</li> 
             <li class="dash-product">
                 <div>Photo</div>
                 <div class="dash-product-name">{{item.product.product_name}}</div>
@@ -36,12 +90,14 @@
         {% endfor %}
         </ul>
     </div>
-        <!-- <div class="orderitems">
+         
+       /* <div class="orderitems">
             {% for item in order_items %}
               <p>{{item.product.product_name}}</p>
               <p>{{item.product.product_code}}</p>
             {% endfor %}
-        </div> -->
+        </div>  */
 
-    </section>
+    </section> 
+    -->
 {% endblock content %}

@@ -1,0 +1,93 @@
+@mixin flexCenter($dir:row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $dir;
+}
+.order-details-clint{
+    @include flexCenter($dir:column);
+    background-color: rgb(228, 225, 208);
+    width: 80vw;
+    height: auto;
+    gap:20px;
+    legend{
+        @include flexCenter();
+        color: blueviolet;
+        background-color: lightblue;
+        font-size:.7em;
+    }
+    .clint-info{
+        @include flexCenter($dir:column);
+        width: inherit;
+
+        div.clt-inf-details{
+            @include flexCenter();
+            flex-wrap: wrap;
+            width: inherit;
+            gap: 15px;
+            padding:10px;
+            // background-color: cadetblue;
+            div.clint-info-detail{
+                font-size: .80em;
+                min-width: 30%;
+                padding:5px;
+                padding-left: 15px;
+
+                background-color: burlywood;
+            }
+        }
+
+
+
+    }
+
+    .order-items-info{
+        @include flexCenter($dir:column);
+
+        width: inherit;
+        // background-color: lightcoral;
+        gap:5px;
+        div.ordered-item{
+            @include flexCenter();
+            justify-content: space-around;
+            width: inherit;
+            height: inherit;
+            // background-color: lawngreen;
+            border: 1px solid blueviolet;
+            font-size: .7em;
+            gap:2px;
+            div.col{
+                    @include flexCenter($dir:column);
+                    gap:1px;
+                    // border: 1px solid steelblue;
+                    // background-color: brown;
+                    max-height: inherit;   
+            }
+            div.col-0{
+                max-width: 5%;
+            }
+            div.col-1{
+                max-height: inherit;
+                width: 10%;
+            }
+            div.col-2{
+                width: 60%;
+            }
+            div.col-3{
+                width: 20%;
+            }
+            span{
+                @include flexCenter();
+                width: 100%;
+                font-size: 1em;
+                height: 50%;
+                // background-color: lavender;
+            }
+            img.sm-img{
+                max-height: 45px;
+                object-fit: scale-down;
+            }
+        }
+
+    }
+}
