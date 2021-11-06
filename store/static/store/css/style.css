@@ -225,7 +225,7 @@ h3{
     
     
 }
-.add-btn{
+.add-btn,.add-btn-dis{
     margin: 0;
     background-color: rgb(58, 241, 232);
     /* padding: 5%; */

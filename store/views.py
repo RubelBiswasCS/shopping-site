@@ -3,6 +3,8 @@ from .models import Product,Cart,ShippingAddress,OrderItem,Order,ProductImages
 from .forms import ShippingAddressForm,AddProductForm,UpdateProductForm,AddProductImagesForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse,HttpResponse,HttpResponseRedirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+ 
 import json
 import datetime
 
@@ -21,6 +23,7 @@ def home(request):
     return render(request, template_name,context)
 
 #add product view
+@login_required
 def add_product(request):
     template_name = 'store/add_product.html'
     ImagesFormset = modelformset_factory(ProductImages,fields=['image',], extra=3)
@@ -49,6 +52,7 @@ def add_product(request):
     return render(request, template_name,context)
 
 # update product view
+@login_required
 def update_product(request):
     template_name = 'store/update_product.html'
     instance = Product.objects.get(product_code=1001)
@@ -85,7 +89,9 @@ def product_details(request,pk):
 
 def delete_product(request):
     return HttpResponse("Product")
-# Create your views here.
+
+# adding product to cart
+@login_required
 def add_to_cart(request):
     user_id = request.user.id
     product_id = request.POST['product_id']
@@ -164,53 +170,57 @@ def cart(request):
     # user = User.objects.get(pk=1)
     
     # cart_items = Cart.objects.filter(user=user)
-    if request.method == 'POST' :
+    if request.method == 'POST' and request.user.is_authenticated :
         cart_items = Cart.objects.filter(user=request.user)
     items={}
     i=0
     total_price = 0
-    for item in cart_items:
-        if item.product.productimages_set:
-            price = item.quantity * item.product.unit_price
-            total_price += price
-            # product_image = ProductImages.objects.get(product__id=item.product.pk)
-            items[i]={
-                'product_id': item.product.pk,
-                'product_name' :item.product.product_name,
-                'unit_price' :item.product.unit_price,
-                'quantity': item.quantity,
-                # 'image':product_image.image.url,
-                'image': item.product.productimages_set.first().image.url,
+    if request.user.is_authenticated:
+        for item in cart_items:
+            if item.product.productimages_set:
+                price = item.quantity * item.product.unit_price
+                total_price += price
+                # product_image = ProductImages.objects.get(product__id=item.product.pk)
+                items[i]={
+                    'product_id': item.product.pk,
+                    'product_name' :item.product.product_name,
+                    'unit_price' :item.product.unit_price,
+                    'quantity': item.quantity,
+                    # 'image':product_image.image.url,
+                    'image': item.product.productimages_set.first().image.url,
+                    'price': price,
+                }
+            else:
+                items[i]={
+                    'product_id': item.product.pk,
+                    'product_name' :item.product.product_name,
+                    'unit_price' :item.product.unit_price,
+                    'quantity': item.quantity,
                 'price': price,
-            }
-        else:
-            items[i]={
-                'product_id': item.product.pk,
-                'product_name' :item.product.product_name,
-                'unit_price' :item.product.unit_price,
-                'quantity': item.quantity,
-               'price': price,
-            }    
-                
-        
-        i+=1
-    data = items
-    data = [total_price,items]
-    # items=[]
-    # for i in cart_items:
-    #     items.append(i.product.product_name)
-    # data={
-        
-    #     'cart_items':items,
-    # }
+                }    
+                    
+            
+            i+=1
+        data = items
+        data = [total_price,items]
+        # items=[]
+        # for i in cart_items:
+        #     items.append(i.product.product_name)
+        # data={
+            
+        #     'cart_items':items,
+        # }
 
-    response = json.dumps(data)
-    return HttpResponse(response)
+        response = json.dumps(data)
+        return HttpResponse(response)
+    else:
+        return HttpResponse("User not authenticated")
 
 def cart_item(request):
     template_name = 'store/cart.html'
     return render(request ,template_name)
 
+@login_required
 def shipping_address(request):
     # order_id = request.session.get('order_id')
     # order = Order.objects.get(pk=order_id)
@@ -307,6 +317,11 @@ def order_overview(request):
     template_name = 'store/order_details.html'
     return render(request, template_name,context)
 
+def user_type_test(user):
+    return user.is_staff
+
+@login_required
+@user_passes_test(user_type_test)
 def dashboard(request):
     template_name = 'store/dashboard.html'
     return render(request, template_name)
@@ -328,7 +343,8 @@ class OrderListView(ListView):
         context = super().get_context_data(**kwargs)
         # context['now'] = timezone.now()
         return context
-
+        
+@login_required
 def dashboard_overview(request):
     template_name = 'store/dashboard_overview.html'
     recent_orders = Order.objects.all()[0:5]
