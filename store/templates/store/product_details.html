@@ -59,7 +59,12 @@
                         
                         <label>Quantity</label>
                         <input id="p-qty" class="p-qty" type="number" pattern="^[0-9]" min="1"  value="1" oninput="validity.valid||(value='');">
+                        <!-- <button id="add-btn" class="add-btn" type="submit" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}" name="button" > Add to Cart</button> -->
+                        {% if user.is_authenticated %}
                         <button id="add-btn" class="add-btn" type="submit" data-id="{{ product.id}}" data-url="{% url 'add-to-cart' %}" name="button" > Add to Cart</button>
+                        {% else %}
+                        <button style="background-color: bisque;" id="add-btn" class="add-btn-dis" data-id="{{p.id}}"  class="add-btn" name="button" >Add to Cart</button>
+                        {% endif %}
                     </form>
                     
                 </div>
