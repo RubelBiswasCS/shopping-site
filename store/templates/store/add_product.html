@@ -21,14 +21,18 @@
             {% endfor %}
             {{ formset.management_form }}
             {% for form in formset %}
+            <div class="field-n-label image-field" >
                 {{ form.errors }}
                 {% for field in form %}
                     {{ field }} 
                 {% endfor %}
+            </div>
+               
             {% endfor %}
         </fieldset>
         <button class="btn-ls" type="submit">Submit</button>
     </form>
        
     </section>
+
 {% endblock content %}

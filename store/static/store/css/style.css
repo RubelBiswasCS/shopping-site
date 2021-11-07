@@ -7,6 +7,11 @@
 /* .bg-light{
     background-color: transparent !important;
 } */
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .main-header{
     display: flex;
     align-items: center;
@@ -289,7 +294,7 @@ h3{
  .shipping-informations .form-field input{
     box-sizing: border-box;
     text-align: center;
-    
+
     
     border-radius: 5px 5px;
     margin: 0;
@@ -322,6 +327,13 @@ h3{
  .field-n-label label{
     
     font-size: .6em;
+ }
+ .shipping-informations .image-field input{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding:10px;
+     /* background-color: rgb(43, 129, 62); */
  }
  .payment{
      display: flex;
