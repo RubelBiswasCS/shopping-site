@@ -37,7 +37,7 @@
               <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
               
             </div>
-            <div style="display: flex; align-items: center; justify-content:center; width:auto; flex-grow: 100; gap:10px;">
+            <div id="search-feature" style="display: flex; align-items: center; justify-content:center; width:auto; flex-grow: 100; gap:10px;">
               <input id="search-box" class="search-box" type="text" >
               <button id="search-btn" class="search-btn" >Search</button>
             </div>
@@ -149,6 +149,13 @@
 
 
       });
+
+      if($(".product-card").length){
+        $("#search-feature").show();
+      }
+      else{
+        $("#search-feature").hide();
+      }
 
     </script>
 
