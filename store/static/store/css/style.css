@@ -118,11 +118,11 @@ h3{
    display: flex;
    
 }
-.left-col{
+/* .left-col{
     padding-top: 10px;
     width: 15vw;
     min-width: 15vw;
-}
+} */
 .filter-items{
     
     display: flex;
