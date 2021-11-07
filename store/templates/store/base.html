@@ -37,6 +37,10 @@
               <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
               
             </div>
+            <div style="display: flex; align-items: center; justify-content:center; width:auto; flex-grow: 100; gap:10px;">
+              <input id="search-box" class="search-box" type="text" >
+              <button id="search-btn" class="search-btn" >Search</button>
+            </div>
             <div class="nav-right gap-10">
               {% if user.is_authenticated %}
                   <a class="nav-item nav-link border border-primary" href="#">{{ user.username }}</a>
@@ -125,6 +129,25 @@
       $("#temp-header-hide").on("click",() => {
         $(".main-header").remove();
         // $(".main-header").css("display","none");
+      });
+
+      $("#search-btn").on('click',() => {
+ ;
+        //alert("search btn clicked");
+        let searchText = document.getElementById('search-box').value.toLowerCase();
+        //let items = document.getElementsByClassName('product-card');
+        $('.product-card').each(function() {
+
+              if ($(this).text().toLowerCase().indexOf(searchText) === -1) {
+                $(this).css('display','none');
+
+              } else {
+                $(this).css('display','flex');;
+                
+              }
+              });
+
+
       });
 
     </script>

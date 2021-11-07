@@ -39,6 +39,25 @@
 .nav-right p{
     margin: 0;
 }
+.search-box{
+    box-sizing:border-box;
+    width:50%; height: 100%;
+    outline: 1px solid skyblue;
+    padding-left:5px;
+    padding-right:5px;
+}
+.search-box:focus{
+    outline: 1px solid red;
+}
+.search-btn{
+    box-sizing:border-box; 
+    margin: 0;
+    padding:0;
+    max-height: 25px;
+    border:1px solid salmon; 
+    padding-left:5px;
+    padding-right:5px;
+}
 .cart-btn{
     box-sizing: border-box;
     border: none;
