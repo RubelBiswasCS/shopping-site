@@ -9,10 +9,18 @@ class Migration(migrations.Migration):
         ('store', '0009_order_temp_order_id'),
     ]
 
+    # operations = [
+    #     migrations.AddField(
+    #         model_name='product',
+    #         name='product_img',
+    #         field=models.ImageField(blank=True, upload_to='images/'),
+    #     ),
+    # ]
     operations = [
-        migrations.AddField(
+        migrations. AlterField(
             model_name='product',
             name='product_img',
             field=models.ImageField(blank=True, upload_to='images/'),
         ),
     ]
+   
