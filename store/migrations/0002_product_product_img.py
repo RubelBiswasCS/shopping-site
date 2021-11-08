@@ -10,6 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+         migrations.RemoveField(
+            model_name='product',
+            name='product_img',
+        ),
         migrations.AddField(
             model_name='product',
             name='product_img',
