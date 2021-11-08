@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='product',
             name='product_img',
             field=models.ImageField(blank=True, null=True, upload_to='images/'),
