@@ -310,8 +310,8 @@ def create_order(request):
 @login_required
 def order_overview(request):
     user_id = request.user.id
-    # order_id = request.session.get('order_id')
-    order_id = 32
+    order_id = request.session.get('order_id')
+    #order_id = 32
 
     order = Order.objects.get(pk=order_id)
     shipping_address = ShippingAddress.objects.get(user__pk=user_id)
