@@ -491,6 +491,24 @@ h3{
 .product-details-info p{
     text-align: justify;
 }
+
+.add-product-form{
+    min-width: 25vw;
+    max-width: 25vw;
+    /* background-color: coral !important; */
+}
+#add-product .form-field{
+
+ width: 90vw !important;
+ display: flex;
+ flex-wrap: wrap;
+ flex-direction: row !important;
+}
+#add-product .fieldWrapper{
+    min-width: 25vw;
+    max-width: 25vw;
+    margin-left: 10px;
+}
 @media only screen and (min-width:1201px){
     /* #about{
         background: rgb(23, 196, 124);
